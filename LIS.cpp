@@ -1,55 +1,89 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
-#define FOR(i,a,b) for(int i = (a); i <= (b); ++i)
-#define FORD(i,a,b) for(int i = (a); i >= (b); --i)
+#define FOR(i, a, b) for (int i = (a); i <= (b); ++i)
+#define FORD(i, a, b) for (int i = (b); i >= (a); --i)
+#define TRAV(x, T) for (auto &(x) : (T))
+#define ALL(T) T.begin(), T.end()
+#define TAB(T, a, b) (T) + a, (T) + ((b) + 1)
+#define VAR(x) #x << " = " << x << " "
+#define sz(x) (int)(x).size()
+#define nwd __gcd
 #define pb push_back
 #define st first
 #define nd second
 typedef long long ll;
 typedef long double ld;
 typedef pair<int, int> pii;
-const int N = 1e6 + 3;
+typedef pair<ll, ll> pll;
+typedef vector<int> vi;
+#define deb if (0)
+const int N = 1e6, NT = N + 2;
+const int INF = 1e9 + 1;
 
-int T[N], DP[N], B[N], C[N];
-pii A[N];
-int n;
+struct Stos {
+    shared_ptr<Stos> prev;
+    int head, size;
+    Stos() {
+        prev = nullptr;
+    }
+    Stos(shared_ptr<Stos> s, int e) {
+        prev = s;
+        head = e;
+    }
+};
 
-void insert(int p, int val) {
-    for(; p <= n; p += p & (-p)) T[p] = max(T[p], val);
+shared_ptr<Stos> historia[NT];
+int t = 1;
+void push(int k, int e) {
+    historia[t++] = make_shared<Stos>(historia[k], e);
+}
+void print_stack(int k) {
+    auto s = historia[k];
+    vi stos;
+    while(s) {
+        stos.pb(s->head);
+        s = s->prev;
+    }
+    reverse(ALL(stos));
+    TRAV(e, stos) {
+        cout<<e<<" ";
+    }
+    cout<<"\n";
 }
 
-int query(int p) {
-    int ans = 0;
-    for(; p > 0; p -= p & (-p)) ans = max(ans, T[p]);
-    return ans;
+int A[NT];
+pii B[NT];
+
+int find(int l, int r, int val) {
+    while(l < r) {
+        int mid = l + (r - l) / 2;
+        if(val < B[mid].st) r = mid;
+        else l = mid + 1;
+    }
+    return l;
 }
 
 signed main() {
     ios_base::sync_with_stdio(0);
     cin.tie(0);
+    int n, ans = 1, idx = 0;;
     cin>>n;
     FOR(i, 1, n) {
-        cin>>C[i];
-        A[i].st = C[i]; A[i].nd = i;
+        cin>>A[i];
     }
-
-    // skalowanie
-    sort(A + 1, A + (n + 1));
-    int kl = 0;
     FOR(i, 1, n) {
-        if(A[i].st == A[i - 1].st) B[ A[i].nd ] = B[ A[i - 1].nd ];
-        else B[ A[i].nd ] = ++kl;
+        B[i].st = INF;
     }
-
-    // wyliczanie DP[]
-    int ans = 0;
     FOR(i, 1, n) {
-        DP[i] = query(B[i] - 1) + 1;
-        ans = max(ans, DP[i]);
-        insert(B[i], DP[i]);
+        int x = find(1, n, A[i]); // szukamy 1szego miejsca ze A[i] < B[x].first
+        push(B[x-1].nd, A[i]); // dodajemy element do poprzedniego stosu
+        if(x >= ans) {
+            ans = x;
+            idx = i;
+        }
+        B[x] = {A[i], i};
     }
-    
-    FOR(i, 1, n) cout<<setw(2)<<C[i]<<" "; cout<<"\n";
-    FOR(i, 1, n) cout<<setw(2)<<DP[i]<<" "; cout<<"\n"<<ans<<"\n";
+    cout<<ans<<"\n";
+    print_stack(idx);
     return 0;
 }
