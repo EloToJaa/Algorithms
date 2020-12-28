@@ -1,90 +1,71 @@
-#include <bits/stdc++.h>
+#include<bits/stdc++.h>
 using namespace std;
-#define FOR(i, a, b) for (int i = (a); i <= (b); ++i)
-#define FORD(i, a, b) for (int i = (a); i >= (b); --i)
+#define FOR(i,a,b) for(int i = (a); i <= (b); ++i)
+#define FORD(i,a,b) for(int i = (b); i >= (a); --i)
+#define TRAV(x,T) for(auto& (x): (T))
+#define ALL(T) T.begin(), T.end()
+#define TAB(T,a,b) (T)+a, (T)+((b)+1)
+#define VAR(x) #x<<" = "<<x<<" " 
+#define sz(x) (int)(x).size()
 #define nwd __gcd
 #define pb push_back
 #define st first
 #define nd second
+#define lc (v<<1)
+#define rc (v<<1|1)
 typedef long long ll;
 typedef long double ld;
 typedef pair<int, int> pii;
-const int N = 1e6 + 2;
-const int INF = 1e9 + 1;
+typedef pair<ll, ll> pll;
+typedef vector<int> vi;
+#define deb if(0)
+const int N = 3e5, NT = N + 2;
+const int NTREE = 524288 * 2 + 2;
 
-ll t[4 * N], lazy[4 * N];
-int A[N];
-int n;
-// !!! - oznacza kod potrzebny przy zmianie query na sum
+ll T[NTREE], lazy[NTREE], A[NT];
 
-int fun(int a, int b)
-{
-    if (a != -INF && b != -INF)
-        return max(a, b); // zamien do zmiany operacji na drzewie
-    if (a == -INF)
-        return b;
-    return a;
+int ntree = 1;
+void build(int n) {
+	while(ntree < n) ntree *= 2;
+    FOR(i, 1, n) T[i + ntree - 1] = A[i];
+    FORD(v, ntree - 1, 1) T[v] = max(T[lc], T[rc]);
 }
 
-void push(int v, int x)
-{
-    t[v * 2] += lazy[v];
-    t[v * 2 + 1] += lazy[v];
-    t[v] += x; // !!!
-    lazy[v * 2] += lazy[v];
-    lazy[v * 2 + 1] += lazy[v];
+void push(int v, ll len) {
+    T[lc] += lazy[v] * len / 2;
+    T[rc] += lazy[v] * len / 2;
+    lazy[lc] += lazy[v];
+    lazy[rc] += lazy[v];
     lazy[v] = 0;
 }
 
-void insert(int v, int start, int end, int l, int r, int val)
-{
-    if (l > r)
-        return;
-    if (l == start && end == r)
-    {
-        //t[v] += val * (end - start + 1); // !!!
-        t[v] += val;
+ll query(int v, int tl, int tr, int l, int r) {
+    if (l <= tl and tr <= r) return T[v];
+    int tm = (tl + tr) / 2;
+    push(v, tr-tl+1);
+    ll a = 0, b = 0;
+    if(l <= tm) a = query(lc, tl, tm, l, r);
+    if(r > tm) b = query(rc, tm+1, tr, l, r);
+    T[v] = T[lc] + T[rc] + lazy[v] * (tr-tl+1);
+    return a + b;
+}
+
+void update(int v, int tl, int tr, int l, int r, ll val) {
+    if (l <= tl and tr <= r) {
+        T[v] += val * (tr-tl+1);
         lazy[v] += val;
         return;
     }
-    //push(v, (end - start + 1) * lazy[v]); // !!!
-    push(v, 0);
-    int mid = (start + end) / 2;
-    insert(v * 2, start, mid, l, min(r, mid), val);
-    insert(v * 2 + 1, mid + 1, end, max(l, mid + 1), r, val);
-    t[v] = fun(t[v * 2], t[v * 2 + 1]);
+    int tm = (tl + tr) / 2;
+    push(v, tr-tl+1);
+    if(l <= tm) update(lc, tl, tm, l, r, val);
+    if(r > tm) update(rc, tm + 1, tr, l, r, val);
+    T[v] = T[lc] + T[rc] + lazy[v] * (tr-tl+1);
 }
 
-int query(int v, int start, int end, int l, int r)
-{
-    if (l > r)
-        return -INF;
-    if (l <= start && end <= r)
-        return t[v];
-    //push(v, (end - start + 1) * lazy[v]); // !!!
-    push(v, 0);
-    int mid = (start + end) / 2;
-    return fun(query(v * 2, start, mid, l, min(r, mid)),
-               query(v * 2 + 1, mid + 1, end, max(l, mid + 1), r));
-}
-
-signed main()
-{
+signed main() {
     ios_base::sync_with_stdio(0);
     cin.tie(0);
-    int n, a, mn = 2;
-    cin >> n;
-    n *= mn;
-    for (int i = 1; i <= n; i += mn)
-    {
-        cin >> a;
-        insert(1, 1, n, i, i + mn - 1, a);
-    }
-    insert(1, 1, n, 1, n - 1, 10);
-    cout << query(1, 1, n, 2, n-1) << "\n";
-    insert(1, 1, n, 1, n - 1, 10);
-    FOR(i, 1, n)
-        cout << query(1, 1, n, i, i) << " ";
-    cout << query(1, 1, n, 2, n-1) << "\n";
+    
     return 0;
-}
+}   

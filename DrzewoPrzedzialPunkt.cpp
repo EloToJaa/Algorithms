@@ -1,66 +1,62 @@
 #include<bits/stdc++.h>
 using namespace std;
 #define FOR(i,a,b) for(int i = (a); i <= (b); ++i)
-#define FORD(i,a,b) for(int i = (a); i >= (b); --i)
+#define FORD(i,a,b) for(int i = (b); i >= (a); --i)
+#define TRAV(x,T) for(auto& (x): (T))
+#define ALL(T) T.begin(), T.end()
+#define TAB(T,a,b) (T)+a, (T)+((b)+1)
+#define VAR(x) #x<<" = "<<x<<" " 
+#define sz(x) (int)(x).size()
+#define nwd __gcd
 #define pb push_back
 #define st first
 #define nd second
-#define fun(a,b) max(a,b)
+#define lc (v<<1)
+#define rc (v<<1|1)
 typedef long long ll;
 typedef long double ld;
 typedef pair<int, int> pii;
-const int N = 1e6+2;
+typedef pair<ll, ll> pll;
+typedef vector<int> vi;
+#define deb if(0)
+const int N = 3e5, NT = N + 2;
+const int NTREE = 524288 * 2 + 2;
 
-int t[3*N], A[N];
-int n;
+ll T[NTREE], A[NT];
 
-void init() {
-    FOR(i, 1, n) {
-        t[n + i - 1] = A[i];
-    }
-    FORD(i, n - 1, 1) {
-        t[i] = fun(t[i*2], t[i*2+1]);
-    }
+int ntree = 1;
+void build(int n) {
+	while(ntree < n) ntree *= 2;
+    FOR(i, 1, n) T[i + ntree - 1] = A[i];
+    FORD(v, ntree - 1, 1) T[v] = max(T[lc], T[rc]);
 }
 
-void insert(int v, int tl, int tr, int l, int r, int val) {
-    if(l <= tl && r >= tr) {
-        t[v] = val;
-        return;
-    }
-    int tm = (tl + tr) / 2;
-    if(l <= tm) insert(2 * v, tl, tm, l, r, val);
-    if(r > tm) insert(2 * v + 1, tm + 1, tr, l, r, val);
-    t[v] = fun( t[v * 2], t[v * 2 + 1]);
+ll query(int pos) {
+    pos += ntree - 1;
+	ll ans = 0;
+	while(pos) {
+		ans = max(ans, T[pos]);
+		pos /= 2;
+	}
+	return ans;
 }
-int query(int v, int tl, int tr, int pos) {
-    if(pos == tl && pos == tr) {
-        return t[v];
-    }
-    int tm = (tl + tr) / 2;
-    if(pos <= tm) return query(2 * v, tl, tm, pos);
-    else return query(2 * v + 1, tm + 1, tr, pos);
+
+void update(int l, int r, int val) {
+    l += ntree - 1; r += ntree - 1;
+	if(l == r) {
+		T[l] = val;
+		return;
+	}
+	T[l] = val; T[r] = val;
+	while(r - l > 1) {
+		if(l % 2 == 0) T[l + 1] ++;
+		if(r % 2 == 1) T[r - 1] ++;
+		l /= 2; r /= 2;
+	}
 }
 
 signed main() {
     ios_base::sync_with_stdio(0);
     cin.tie(0);
-    cin>>n;
-    FOR(i,1,n) {
-        cin>>A[i];
-    }
-    init();
-    insert(1,1,n,1,5,3);
-    insert(1,1,n,3,6,5);
-    cout<<query(1,1,n,4)<<"\n";
-    insert(1,1,n,6,8,7);
-    insert(1,1,n,1,7,2);
-    cout<<query(1,1,n,5)<<"\n";
-    cout<<query(1,1,n,8)<<"\n";
-    insert(1,1,n,3,5,8);
-    cout<<query(1,1,n,4)<<"\n";
-    FOR(i,n,2*n-1) {
-        cout<<t[i]<<" ";
-    }
     return 0;
 }

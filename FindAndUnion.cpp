@@ -3,22 +3,18 @@
 using namespace std;
 int rep[N], ile[N];
 int n;
-void Union(int a, int b) // b staje sie rodzicem a
-{
+void Union(int a, int b) {
     a = Find(a); b = Find(b);
     if(ile[a] > ile[b]) swap(a, b);
     rep[a] = b;
     ile[b] += ile[a];
 }
-int Find(int a)
-{
+int Find(int a) {
     if(rep[a] != a) rep[a] = Find(rep[a]);
     return rep[a];
 }
-void init()
-{
-    for(int i=1; i<=n; ++i)
-    {
+void init() {
+    for(int i=1; i<=n; ++i) {
         rep[i] = i;
         ile[i] = 1;
     }

@@ -1,79 +1,60 @@
-#include <bits/stdc++.h>
+#include<bits/stdc++.h>
 using namespace std;
-#define FOR(i, a, b) for (int i = (a); i <= (b); ++i)
-#define FORD(i, a, b) for (int i = (a); i >= (b); --i)
-#define mp make_pair
+#define FOR(i,a,b) for(int i = (a); i <= (b); ++i)
+#define FORD(i,a,b) for(int i = (b); i >= (a); --i)
+#define TRAV(x,T) for(auto& (x): (T))
+#define ALL(T) T.begin(), T.end()
+#define TAB(T,a,b) (T)+a, (T)+((b)+1)
+#define VAR(x) #x<<" = "<<x<<" " 
+#define sz(x) (int)(x).size()
+#define nwd __gcd
 #define pb push_back
 #define st first
 #define nd second
+#define lc (v<<1)
+#define rc (v<<1|1)
 typedef long long ll;
 typedef long double ld;
 typedef pair<int, int> pii;
-const int N = 1e6 + 2;
+typedef pair<ll, ll> pll;
+typedef vector<int> vi;
+#define deb if(0)
+const int N = 3e5, NT = N + 2;
+const int NTREE = 524288 * 2 + 2;
 
-int t[4 * N], A[N];
-int n;
+ll T[NTREE], A[NT];
 
-int fun(int a, int b)
-{
-    if (a != -1 && b != -1)
-        return max(a, b); // zamien do zmiany operacji na drzewie
-    if (a == -1)
-        return b;
-    return a;
+int ntree = 1;
+void build(int n) {
+	while(ntree < n) ntree *= 2;
+    FOR(i, 1, n) T[i + ntree - 1] = A[i];
+    FORD(v, ntree - 1, 1) T[v] = max(T[lc], T[rc]);
 }
 
-void insert(int v, int start, int end, int pos, int val)
-{
-    if (start == end)
-    {
-        t[v] = val;
-        return;
+void insert(int pos, int val) {
+    pos += ntree - 1;
+    T[pos] = val;
+    pos /= 2;
+    while(pos) {
+        T[pos] = max(T[pos * 2], T[pos * 2 + 1]);
+        pos /= 2;
     }
-    int mid = (start + end) / 2;
-    if (pos <= mid)
-        insert(v * 2, start, mid, pos, val);
-    else
-        insert(v * 2 + 1, mid + 1, end, pos, val);
-    t[v] = fun( t[v * 2], t[v * 2 + 1]);
 }
 
-int query(int v, int start, int end, int l, int r)
-{
-    if (l > r)
-        return -1;
-    if (l == start && r == end)
-        return t[v];
-    int mid = (start + end) / 2;
-    return fun( query(v * 2, start, mid, l, min(r, mid)), query(v * 2 + 1, mid + 1, end, max(l, mid + 1), r) );
+ll query(int l, int r) {
+    l += ntree - 1; r += ntree - 1;
+    ll ans = T[l];
+    if(r > l) ans = max(ans, T[r]);
+    while(l + 1 < r) {
+        if(l % 2 == 0) ans = max(ans, T[l + 1]);
+        if(r % 2 == 1) ans = max(ans, T[r - 1]);
+        l /= 2; r /= 2;
+    }
+    return ans;
 }
 
-void build()
-{
-    FOR(i, 1, n)
-        t[n + i - 1] = A[i];
-    FORD(i, n - 1, 1)
-        t[i] = fun(t[i * 2], t[i * 2 + 1]);
-}
-
-signed main()
-{
+signed main() {
     ios_base::sync_with_stdio(0);
     cin.tie(0);
-    int m, a;
-    cin >> n;
-    FOR(i, 1, n)
-    cin >> A[i];
-    build();
-    insert(1, 1, n, 1, 7);
-    insert(1, 1, n, 8, 5);
-    cout << query(1, 1, n, 1, 5) << "\n";
-    insert(1, 1, n, 6, 4);
-    insert(1, 1, n, 7, 5);
-    cout << query(1, 1, n, 2, 8) << "\n";
-    insert(1, 1, n, 1, 3);
-    cout << query(1, 1, n, 3, 4) << "\n";
-    FOR(i, 1, 2 * n - 1)
-    cout << t[i] << " ";
     return 0;
 }

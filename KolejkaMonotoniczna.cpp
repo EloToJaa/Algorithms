@@ -2,30 +2,28 @@
 using namespace std;
 #define st first
 #define nd second
+typedef pair<int, int> pii; 
 const int INF = 1e9 + 2;
 
 class monqueue {
 private:
-    int pops = 1, pushes = 1;
+    int pops, pushes;
 public:
     deque<pii> Q;
-    void push(int a);
-    void pop();
-    int max();
+    void push(int a) {
+        while(!Q.empty() && Q.back().st <= a) Q.pop_back();
+        pushes++;
+        Q.push_back({a, pushes});
+    }
+    void pop() {
+        pops++;
+        if(pops == Q.front().nd) Q.pop_front();
+    }
+    int max() {
+        if(Q.empty()) return -INF;
+        return Q.front().st;
+    }
 };
-void monqueue::push(int a) {
-    while(!Q.empty() && Q.back().st <= a) Q.pop_back();
-    Q.push_back({a, pushes});
-    pushes++;
-}
-void monqueue::pop() {
-    if(pops == Q.front().nd) Q.pop_front();
-    pops++;
-}
-int monqueue::max() {
-    if(Q.empty()) return -INF;
-    return Q.front().st;
-}
 
 monqueue Q;
 

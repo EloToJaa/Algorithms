@@ -49,6 +49,7 @@ signed main() {
         insert(B[i], DP[i]);
     }
     
-    FOR(i, 1, n) cout<<DP[i]<<" "; cout<<"\n"<<ans<<"\n";
+    FOR(i, 1, n) cout<<setw(2)<<C[i]<<" "; cout<<"\n";
+    FOR(i, 1, n) cout<<setw(2)<<DP[i]<<" "; cout<<"\n"<<ans<<"\n";
     return 0;
 }
