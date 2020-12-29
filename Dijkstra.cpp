@@ -1,16 +1,27 @@
 #include<bits/stdc++.h>
 using namespace std;
 #define FOR(i,a,b) for(int i = (a); i <= (b); ++i)
-#define FORD(i,a,b) for(int i = (a); i >= (b); --i)
+#define FORD(i,a,b) for(int i = (b); i >= (a); --i)
+#define TRAV(x,T) for(auto& x: (T))
+#define ALL(T) T.begin(), T.end()
+#define TAB(T,a,b) (T)+a, (T)+((b)+1)
+#define VAR(x) #x<<" = "<<x<<" " 
+#define sz(x) (int)(x).size()
+#define nwd __gcd
 #define pb push_back
 #define st first
 #define nd second
+#define lc (v<<1)
+#define rc (v<<1|1)
 typedef long long ll;
 typedef long double ld;
 typedef pair<int, int> pii;
+typedef pair<ll, ll> pll;
 typedef pair<ll, int> pli;
-const int N = 1e6 + 2;
-const ll INF = 1e18 + 2;
+typedef vector<int> vi;
+#define deb if(0)
+const int N = 1e6, NT = N + 2;
+const ll INF = (ll)1e18 + 2;
 
 ll path[2 * N], D[N];
 vector<pii> V[N];
@@ -27,8 +38,8 @@ void dijkstra(int v) {
         Q.pop();
         if(dist > D[v])
             continue;
-        for(auto x: V[v]) {
-            int u = x.st, c = x.nd;
+        TRAV(x, V[v]) {
+            auto [u, c] = x;
             if(D[v] + c < D[u]) {
                 D[u] = D[v] + c;
                 path[u] = v;
@@ -36,19 +47,4 @@ void dijkstra(int v) {
             }
         }
     }
-}
-
-signed main() {
-    ios_base::sync_with_stdio(0);
-    cin.tie(0);
-    int a, b, c;
-    cin>>n>>m;
-    FOR(i, 1, m) {
-        cin>>a>>b>>c;
-        V[a].pb({b, c});
-        V[b].pb({a, c});
-    }
-    dijkstra(1);
-    FOR(i, 1, n) cout<<D[i]<<" ";
-    return 0;
 }
