@@ -31,12 +31,12 @@ void build(int n) {
     FORD(v, ntree - 1, 1) T[v] = max(T[lc], T[rc]);
 }
 
-ll query(int pos) {
-    pos += ntree - 1;
+ll query(int v) {
+    v += ntree - 1;
 	ll ans = 0;
-	while(pos) {
-		ans = max(ans, T[pos]);
-		pos /= 2;
+	while(v) {
+		ans = max(ans, T[v]);
+		v >>= 1;
 	}
 	return ans;
 }
@@ -49,9 +49,9 @@ void update(int l, int r, int val) {
 	}
 	T[l] = val; T[r] = val;
 	while(r - l > 1) {
-		if(l % 2 == 0) T[l + 1] ++;
-		if(r % 2 == 1) T[r - 1] ++;
-		l /= 2; r /= 2;
+		if(!(l&1)) T[l + 1] ++;
+		if(r&1) T[r - 1] ++;
+		l >>= 1; r >>= 1;
 	}
 }
 
