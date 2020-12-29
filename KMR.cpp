@@ -98,9 +98,6 @@ int porownaj(int a, int b, int c, int d) { // 0 - s(a,b) < s(c,d), 1 - s(a,b) ==
     pii x, y;
     x = {KMR[a][qa], KMR[b - pota + 1][qa]};
     y = {KMR[c][qb], KMR[d - potb + 1][qb]};
-    //cout<<qa<<" "<<qb<<"\n";
-    //cout<<x.first<<" "<<x.second<<"\n";
-    //cout<<y.first<<" "<<y.second<<"\n\n";
     if(x < y) return 0;
     else if(x == y) return 1;
     else return 2;
