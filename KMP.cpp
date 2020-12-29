@@ -1,23 +1,27 @@
 #include<bits/stdc++.h>
 using namespace std;
 #define FOR(i,a,b) for(int i = (a); i <= (b); ++i)
-#define FORD(i,a,b) for(int i = (a); i >= (b); --i)
-#define TRAV(x,T) for(auto& (x): (T))
-#define ALL(x) x.begin(), x.end()
-#define TAB(x,n) (x)+1, (x)+((n)+1)
+#define FORD(i,a,b) for(int i = (b); i >= (a); --i)
+#define TRAV(x,T) for(auto& x: (T))
+#define ALL(T) T.begin(), T.end()
+#define TAB(T,a,b) (T)+a, (T)+((b)+1)
+#define VAR(x) #x<<" = "<<x<<" " 
 #define sz(x) (int)(x).size()
+#define nwd __gcd
 #define pb push_back
-#define pf push_front
 #define st first
 #define nd second
+#define lc (v<<1)
+#define rc (v<<1|1)
 typedef long long ll;
 typedef long double ld;
 typedef pair<int, int> pii;
 typedef pair<ll, ll> pll;
 typedef vector<int> vi;
-const int N = 1e6 + 2;
+#define deb if(0)
+const int N = 1e6, NT = N + 2;
 
-int P[N], S[N];
+int P[NT], S[NT];
 void kmp(string s, int n) {
     s = "#" + s;
     FOR(i, 2, n) {
