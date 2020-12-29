@@ -29,10 +29,10 @@ void bfs(int v) {
     while(!Q.empty()) {
         v = Q.front();
         Q.pop();
+        vis[v] = true;
         TRAV(u, V[v]) {
             if(!vis[u]) {
                 Q.push(u);
-                vis[u] = true;
             }
         } 
     }
