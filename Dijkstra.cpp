@@ -23,12 +23,11 @@ typedef vector<int> vi;
 const int N = 1e6, NT = N + 2;
 const ll INF = (ll)1e18 + 2;
 
-ll path[2 * N], D[N];
-vector<pii> V[N];
+ll path[2 * NT], D[NT];
+vector<pii> V[NT];
 priority_queue<pli> Q;
-int n, m;
 
-void dijkstra(int v) {
+void dijkstra(int v, int n) {
     FOR(i, 1, n) D[i] = INF;
     D[v] = 0;
     Q.push({0, v});
