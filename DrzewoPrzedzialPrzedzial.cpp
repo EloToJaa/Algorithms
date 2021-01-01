@@ -26,7 +26,7 @@ ll T[NTREE], lazy[NTREE], A[NT];
 
 int ntree = 1;
 void build(int n) {
-	while(ntree < n) ntree *= 2;
+	while(ntree < n) ntree <<= 1;
     FOR(i, 1, n) T[i + ntree - 1] = A[i];
     FORD(v, ntree - 1, 1) T[v] = max(T[lc], T[rc]);
 }
