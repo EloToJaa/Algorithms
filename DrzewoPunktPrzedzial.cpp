@@ -35,7 +35,7 @@ void update(int v, int val) {
     v += ntree - 1;
     T[v] = val;
     v /= 2;
-    while(v) {
+    while(v > 0) {
         T[v] = max(T[lc], T[rc]);
         v >>= 1;
     }

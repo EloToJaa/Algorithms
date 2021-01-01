@@ -22,8 +22,8 @@ typedef vector<int> vi;
 const int N = 1e6, NT = N + 2;
 const int LOG = 20; // log n
 
-int anc[NT][LOG + 2], pre[NT], post[NT], idx;
 vi V[NT];
+int anc[NT][LOG + 1], pre[NT], post[NT], idx;
 
 void ancestors(int v, int p) {
     anc[v][0] = p;
@@ -50,11 +50,4 @@ int LCA(int a, int b) {
             a = anc[a][k];
     }
     return anc[a][0];
-}
-
-signed main() {
-    ios_base::sync_with_stdio(0);
-    cin.tie(0);
-    
-    return 0;
 }

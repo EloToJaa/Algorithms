@@ -34,7 +34,7 @@ void build(int n) {
 ll query(int v) {
     v += ntree - 1;
 	ll ans = 0;
-	while(v) {
+	while(v > 0) {
 		ans = max(ans, T[v]);
 		v >>= 1;
 	}
