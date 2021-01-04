@@ -48,24 +48,6 @@ struct Edge {
 vector<pii> V[NT];
 vector<Edge> ANS;
 
-/* przykladowe dane
-9 14
-7 8 1
-9 3 2
-8 6 2
-1 2 4
-3 6 4
-9 8 6
-3 4 7
-7 9 7
-1 7 8
-2 3 8
-4 5 9
-6 5 10
-2 7 11
-4 6 14
-*/
-
 void Kruskal(int n, int m) { // znajdz MST - minimalne drzewo rozpinajace, O(m log m)
     Init(n); // przygotuj Find and Union dla wierzcholkow, w tym przykladzie numeracja wierzcholkow jest od 1 do n
     // sort krawedzi po wagach
