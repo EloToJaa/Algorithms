@@ -24,7 +24,7 @@ const int N = 1e6, NT = N + 2;
 int REP[NT], ILE[NT];
 
 void Init(int n) {
-    FOR(i, 0, n) {
+    FOR(i, 1, n) {
         REP[i] = i;
         ILE[i] = 1;
     }
@@ -42,11 +42,11 @@ int Find(int a) { // O(stala ackermana)
 }
 
 struct Edge {
-    int a,b,w; // a - poczatek, b - koniec, w - waga
-};
+    int a, b, w; // a - poczatek, b - koniec, w - waga
+} K[NT];
+
 vector<pii> V[NT];
 vector<Edge> ANS;
-Edge K[N];
 
 /* przykladowe dane
 9 14
@@ -67,9 +67,9 @@ Edge K[N];
 */
 
 void Kruskal(int n, int m) { // znajdz MST - minimalne drzewo rozpinajace, O(m log m)
-    Init(1, n); // przygotuj Find and Union dla wierzcholkow, w tym przykladzie numeracja wierzcholkow jest od 1 do n
+    Init(n); // przygotuj Find and Union dla wierzcholkow, w tym przykladzie numeracja wierzcholkow jest od 1 do n
     // sort krawedzi po wagach
-    sort(TAB(K, 1, m), [](const Edge &a, const Edge &b){
+    sort(TAB(K, 1, m), [](const Edge &a, const Edge &b) {
         return a.w < b.w;
     });
     int a, b;
