@@ -38,7 +38,7 @@ void dijkstra(int v, int n) {
         if(dist > D[v])
             continue;
         TRAV(x, V[v]) {
-            auto [u, c] = x;
+            int u = x.st, c = x.nd;
             if(D[v] + c < D[u]) {
                 D[u] = D[v] + c;
                 path[u] = v;
