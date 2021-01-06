@@ -25,7 +25,7 @@ const ll INF = (ll)1e18 + 2;
 
 class monqueue {
 private:
-    int pops, pushes;
+    int pops = 0, pushes = 0;
 public:
     deque<pli> Q;
     void push(ll a) {
