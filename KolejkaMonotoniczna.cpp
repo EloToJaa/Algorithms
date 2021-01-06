@@ -28,10 +28,10 @@ private:
     int pops = 0, pushes = 0;
 public:
     deque<pli> Q;
-    void push(ll a) {
-        while(!Q.empty() && Q.back().st <= a) Q.pop_back();
+    void push(const ll &val) {
+        while(!Q.empty() && Q.back().st <= val) Q.pop_back();
         pushes++;
-        Q.push_back({a, pushes});
+        Q.push_back({val, pushes});
     }
     void pop() {
         pops++;
