@@ -29,7 +29,7 @@ private:
 public:
     deque<pli> Q;
     void push(const ll &val) {
-        while(!Q.empty() && Q.back().st <= val) Q.pop_back();
+        while(!Q.empty() and Q.back().st <= val) Q.pop_back();
         pushes++;
         Q.push_back({val, pushes});
     }
