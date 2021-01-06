@@ -35,7 +35,7 @@ public:
     }
     void pop() {
         pops++;
-        if(pops == Q.front().nd) Q.pop_front();
+        if(!Q.empty() and pops == Q.front().nd) Q.pop_front();
     }
     ll max() {
         if(Q.empty()) return -INF;
