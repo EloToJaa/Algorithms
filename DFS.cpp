@@ -22,10 +22,12 @@ typedef vector<int> vi;
 const int N = 1e6, NT = N + 2;
 
 vi V[NT];
-bitset<NT> vis;
-void dfs(int v) {
-    vis[v] = true;
+bitset<NT> Vis;
+void dfs(int v, int p) {
+    Vis[v] = true;
     TRAV(u, V[v]) {
-        if(!vis[u]) dfs(u);
+        if(!Vis[u]) {
+            dfs(u, v);
+        }
     }
 }
