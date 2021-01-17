@@ -22,16 +22,16 @@ typedef vector<int> vi;
 const int N = 1e6, NT = N + 2;
 
 vi V[NT];
-bitset<NT> vis;
+bitset<NT> Vis;
 queue<int> Q;
 void bfs(int v) {
     Q.push(v);
     while(!Q.empty()) {
         v = Q.front();
         Q.pop();
-        vis[v] = true;
+        Vis[v] = true;
         TRAV(u, V[v]) {
-            if(!vis[u]) {
+            if(!Vis[u]) {
                 Q.push(u);
             }
         } 
