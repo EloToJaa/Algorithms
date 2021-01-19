@@ -47,21 +47,14 @@ class Hash {
                 dod( H[i - 1].nd, mnoz(pot[i].nd, (s[i] - S + 1) ) )
             };
     }
-    void create_object(string input_string, int max_size) {
+
+    public:
+    void initialize(string input_string, int max_size = -1) {
         s = "#" + input_string;
         n = sz(s) - 1;
         if(max_size == -1) m = n;
         else m = max_size;
         build();
-    }
-
-    public:
-    Hash() {}
-    Hash(string input_string, int max_size = -1) {
-        create_object(input_string, max_size);
-    }
-    void initialize(string input_string, int max_size = -1) {
-        create_object(input_string, max_size);
     }
     pll get_hash(int begin = 1, int end = -1) {
         if(end == -1) end = n;
