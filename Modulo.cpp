@@ -31,7 +31,7 @@ struct Modulo {
     }
     ll Pow(ll a, ll b) {
         if(b == 0) return 1;
-        ll ans = Modulate(Pow(a, b / 2));
+        ll ans = Pow(a, b / 2);
         ans = Modulate(ans * ans);
         if(b & 1) return Modulate(ans * a);
         return ans;
