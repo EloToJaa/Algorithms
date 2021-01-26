@@ -45,6 +45,7 @@ struct Modulo {
         ll b = ExtGcd(a, MOD).st;
         if(b < 0) b += MOD;
         return b;
+        //return Pow(a, MOD - 2);
     }
     void operator+=(const Modulo &x) {
         val += x.val;
