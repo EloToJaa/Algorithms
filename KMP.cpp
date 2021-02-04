@@ -6,8 +6,8 @@ using namespace std;
 #define ALL(T) T.begin(), T.end()
 #define TAB(T,a,b) (T)+a, (T)+((b)+1)
 #define VAR(x) #x<<" = "<<x<<" " 
-#define sz(x) (int)(x).size()
-#define nwd __gcd
+#define SZ(x) (int)(x).size()
+#define Nwd __gcd
 #define pb push_back
 #define st first
 #define nd second
@@ -16,42 +16,20 @@ using namespace std;
 typedef long long ll;
 typedef long double ld;
 typedef pair<int, int> pii;
+typedef pair<int, ll> pil;
+typedef pair<ll, int> pli;
 typedef pair<ll, ll> pll;
 typedef vector<int> vi;
 #define deb if(0)
-const int N = 1e6, NT = N + 2;
 
-int P[NT], S[NT];
-void kmp(string s, int n) {
+int Pi[NT];
+void Kmp(string s) {
+    int n = SZ(s);
     s = "#" + s;
     FOR(i, 2, n) {
-        int pref = P[i - 1];
-        while(pref > 0 && s[pref + 1] != s[i]) pref = P[pref];
+        int pref = Pi[i - 1];
+        while(pref > 0 and s[pref + 1] != s[i]) pref = Pi[pref];
         if(s[pref + 1] == s[i]) pref++;
-        P[i] = pref;
+        Pi[i] = pref;
     }
-
-    FOR(i, 1, n) {
-        if(P[i] == 0) S[i] = i;
-        else S[i] = S[P[i]];
-    }
-}
-
-ll solve(int n) {
-    ll ans = 0;
-    FOR(i, 1, n)
-        if(S[i] <= i / 2)
-            ans += (i - S[i]);
-    return ans;
-}
-
-signed main() {
-    ios_base::sync_with_stdio(0);
-    cin.tie(0);
-    int n;
-    string s;
-    cin>>n>>s;
-    kmp(s, n);
-    cout<<solve(n)<<"\n";
-    return 0;
 }

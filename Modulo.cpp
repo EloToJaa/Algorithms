@@ -23,50 +23,37 @@ typedef vector<int> vi;
 #define deb if(0)
 
 struct Modulo {
-    const ll MOD = 1e9 + 7;
-    ll val;
-    ll Modulate(const ll &a) {
+    ll MOD;
+    Modulo(ll mod) {
+        MOD = mod;
+    }
+    ll Moduluj(const ll &a) {
         if(a < MOD) return a;
         return a % MOD;
     }
-    ll Pow(ll a, ll b) {
+    ll Power(ll a, ll b) {
         if(b == 0) return 1;
-        ll ans = Pow(a, b / 2);
-        ans = Modulate(ans * ans);
-        if(b & 1) return Modulate(ans * a);
+        ll ans = Power(a, b / 2);
+        ans = Moduluj(ans * ans);
+        if(b & 1) return Moduluj(ans * a);
         return ans;
     }
-    pll ExtGcd(ll a, ll b) {
-        if(b == 0) return {1, 0};
-        pll ans = ExtGcd(b, a % b);
-        return { ans.second, ans.first - (a / b) * ans.second };
+    ll Dodaj(ll a, ll b) {
+        a = Moduluj(a), b = Moduluj(b);
+        if(a + b >= MOD) return a + b - MOD;
+        else return a + b;
     }
-    ll InverseMod(const ll &a) {
-        ll b = ExtGcd(a, MOD).st;
-        if(b < 0) b += MOD;
-        return b;
-        //return Pow(a, MOD - 2);
+    ll Odejmij(ll a, ll b) {
+        a = Moduluj(a), b = Moduluj(b);
+        if(a - b < 0) return a - b + MOD;
+        else return a - b;
     }
-    void operator+=(const Modulo &x) {
-        val += x.val;
-        if(val >= MOD) val -= MOD;
+    ll Mnoz(ll a, ll b) {
+        a = Moduluj(a), b = Moduluj(b);
+        return Moduluj(a * b);
     }
-    void operator-=(const Modulo &x) {
-        val -= x.val;
-        if(val < 0) val += MOD;
+    ll Dziel(ll a, ll b) {
+        a = Moduluj(a), b = Moduluj(b);
+        return Moduluj(a * Power(b, MOD - 2));
     }
-    void operator*=(const Modulo &x) {
-        val *= x.val;
-        val = Modulate(val);
-    }
-    void operator/=(const Modulo &x) {
-        val *= InverseMod(x.val);
-        val = Modulate(val);
-    }
-    void operator=(const Modulo &x) {
-        val = Modulate(x.val);
-    }
-    void operator=(const ll &x) {
-        val = Modulate(x);
-    }
-};
+} Mod(1e9 + 7);

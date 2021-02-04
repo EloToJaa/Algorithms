@@ -23,10 +23,8 @@ typedef vector<int> vi;
 #define deb if(0)
 const ll INF = (ll)1e18 + 2;
 
-class monqueue {
-private:
+struct Monqueue {
     int pops = 0, pushes = 0;
-public:
     deque<pli> Q;
     void push(const ll &val) {
         while(!Q.empty() and Q.back().st <= val) Q.pop_back();
@@ -42,5 +40,3 @@ public:
         return Q.front().st;
     }
 };
-
-monqueue Q;

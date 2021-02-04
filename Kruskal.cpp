@@ -42,15 +42,11 @@ int Find(int a) { // O(stala ackermana)
 }
 
 struct Edge {
-    int a, b, w; // a - poczatek, b - koniec, w - waga
+    int a, b, w;
 } K[NT];
 
-vector<pii> V[NT];
-vector<Edge> ANS;
-
-void Kruskal(int n, int m) { // znajdz MST - minimalne drzewo rozpinajace, O(m log m)
-    Init(n); // przygotuj Find and Union dla wierzcholkow, w tym przykladzie numeracja wierzcholkow jest od 1 do n
-    // sort krawedzi po wagach
+void Kruskal(int n, int m) {
+    Init(n);
     sort(TAB(K, 1, m), [](const Edge &a, const Edge &b) {
         return a.w < b.w;
     });
@@ -59,23 +55,7 @@ void Kruskal(int n, int m) { // znajdz MST - minimalne drzewo rozpinajace, O(m l
         a = Find(K[i].a);
         b = Find(K[i].b);
         if(a != b) {
-            ANS.pb(K[i]); // dodajemy krawedz do wyniku
             Union(a, b);
         }
     }
-}
-
-signed main() {
-    ios_base::sync_with_stdio(0);
-    cin.tie(0);
-    // wprowadzanie grafu
-    int n, m, a, b, c;
-    cin>>n>>m;
-    FOR(i, 1, m) {
-        cin>>a>>b>>c;
-        K[i] = {a, b, c};
-    }
-    Kruskal(n, m);
-    TRAV(e, ANS) cout<<e.a<<" -> "<<e.b<<" "<<e.w<<"\n";
-    return 0;
 }
