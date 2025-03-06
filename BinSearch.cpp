@@ -6,6 +6,7 @@ bool check(int x) {
   return 1 == 1; // warunek
 }
 
+// Look for the first true value ie. F F F T T T
 int search_first(int l, int r) {
   int mid;
   while (l < r) {
@@ -18,6 +19,7 @@ int search_first(int l, int r) {
   return l;
 }
 
+// Look for the last true value ie. T T T F F F
 int search_last(int l, int r) {
   int mid;
   while (l < r) {
