@@ -1,49 +1,31 @@
-#include<bits/stdc++.h>
-using namespace std;
-#define FOR(i,a,b) for(int i = (a); i <= (b); ++i)
-#define FORD(i,a,b) for(int i = (b); i >= (a); --i)
-#define TRAV(x,T) for(auto& x: (T))
-#define ALL(T) T.begin(), T.end()
-#define TAB(T,a,b) (T)+a, (T)+((b)+1)
-#define VAR(x) #x<<" = "<<x<<" " 
-#define sz(x) (int)(x).size()
-#define nwd __gcd
-#define pb push_back
-#define st first
-#define nd second
-#define lc (v<<1)
-#define rc (v<<1|1)
-typedef long long ll;
-typedef long double ld;
-typedef pair<int, int> pii;
-typedef pair<ll, ll> pll;
-typedef pair<ll, int> pli;
-typedef vector<int> vi;
-#define deb if(0)
-const int N = 1e6, NT = N + 2;
-const ll INF = (ll)1e18 + 2;
+#include <bits/stdc++.h>
 
-ll path[2 * NT], D[NT];
-vector<pii> V[NT];
-priority_queue<pli> Q;
+using namespace std;
+
+const int N = 1e6, NT = N + 2;
+
+long long path[2 * NT], D[NT];
+vector<pair<int, int>> V[NT];
+priority_queue<pair<long, int>> Q;
 
 void dijkstra(int v, int n) {
-    FOR(i, 1, n) D[i] = INF;
-    D[v] = 0;
-    Q.push({0, v});
-    while(!Q.empty()) {
-        v = Q.top().nd;
-        ll dist = -Q.top().st;
-        Q.pop();
-        if(dist > D[v])
-            continue;
-        TRAV(x, V[v]) {
-            int u = x.st, c = x.nd;
-            if(D[v] + c < D[u]) {
-                D[u] = D[v] + c;
-                path[u] = v;
-                Q.push({-D[u], u});
-            }
-        }
+  for (int i = 1; i <= n; i++)
+    D[i] = LONG_LONG_MAX;
+  D[v] = 0;
+  Q.push({0, v});
+  while (!Q.empty()) {
+    v = Q.top().second;
+    long long dist = -Q.top().first;
+    Q.pop();
+    if (dist > D[v])
+      continue;
+    for (const auto &x : V[v]) {
+      int u = x.first, c = x.second;
+      if (D[v] + c < D[u]) {
+        D[u] = D[v] + c;
+        path[u] = v;
+        Q.push({-D[u], u});
+      }
     }
+  }
 }
