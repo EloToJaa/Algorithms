@@ -10,7 +10,7 @@ bool check(int x) {
 int search_first(int l, int r) {
   int mid;
   while (l < r) {
-    mid = (l + r) >> 1;
+    mid = (l + r) >> 1; // (l + (r - l)) >> 1
     if (check(mid))
       r = mid;
     else
@@ -23,7 +23,7 @@ int search_first(int l, int r) {
 int search_last(int l, int r) {
   int mid;
   while (l < r) {
-    mid = (l + r + 1) >> 1;
+    mid = (l + r + 1) >> 1; // (l + (r - l) + 1) >> 1
     if (check(mid))
       l = mid;
     else

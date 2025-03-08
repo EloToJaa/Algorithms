@@ -2,75 +2,41 @@
 
 using namespace std;
 
-const int N = 1e6, NT = N + 2;
+class LIS {
+public:
+  int findNewPosition(const vector<int> &lis, int num) {
+    int l = 0, r = lis.size() - 1, mid;
 
-struct StackStruct {
-  shared_ptr<StackStruct> prev;
-  int head, size;
-  StackStruct() { prev = nullptr; }
-  StackStruct(shared_ptr<StackStruct> s, int e) {
-    prev = s;
-    head = e;
+    while (l < r) {
+      mid = (l + r) >> 1;
+      if (num < lis[mid])
+        r = mid;
+      else
+        l = mid + 1;
+    }
+    return l;
+  }
+
+  int lengthOfLIS(const vector<int> &nums) {
+    int n = nums.size();
+    if (n <= 1)
+      return n;
+
+    vector<int> lis;
+    lis.push_back(nums[0]);
+    for (const int &num : nums) {
+      if (num > lis[lis.size() - 1]) {
+        lis.push_back(num);
+        continue;
+      }
+      if (num == lis[lis.size() - 1])
+        continue;
+      int pos = findNewPosition(lis, num);
+      if (pos > 0 && lis[pos - 1] == num)
+        continue;
+      lis[pos] = num;
+    }
+
+    return lis.size();
   }
 };
-
-shared_ptr<StackStruct> historia[NT];
-int t = 1;
-
-void push(int k, int e) {
-  historia[t++] = make_shared<StackStruct>(historia[k], e);
-}
-
-void printStack(int k) {
-  auto s = historia[k];
-  vector<int> stos;
-  while (s) {
-    stos.push_back(s->head);
-    s = s->prev;
-  }
-  reverse(stos.begin(), stos.end());
-  for (const int &e : stos) {
-    cout << e << " ";
-  }
-  cout << "\n";
-}
-
-int A[NT];
-pair<int, int> B[NT];
-
-int find(int l, int r, int val) {
-  while (l < r) {
-    int mid = (l + (r - l)) >> 1;
-    if (val < B[mid].first)
-      r = mid;
-    else
-      l = mid + 1;
-  }
-  return l;
-}
-
-signed main() {
-  ios_base::sync_with_stdio(0);
-  cin.tie(0);
-  int n, ans = 1, idx = 0;
-
-  cin >> n;
-  for (int i = 1; i <= n; i++) {
-    cin >> A[i];
-  }
-  for (int i = 1; i <= n; i++) {
-    B[i].first = LONG_LONG_MAX;
-  }
-  for (int i = 1; i <= n; i++) {
-    int x = find(1, n, A[i]);    // szukamy 1szego miejsca ze A[i] < B[x].first
-    push(B[x - 1].second, A[i]); // dodajemy element do poprzedniego stosu
-    if (x >= ans) {
-      ans = x;
-      idx = i;
-    }
-    B[x] = {A[i], i};
-  }
-  cout << ans << "\n";
-  printStack(idx);
-  return 0;
-}
