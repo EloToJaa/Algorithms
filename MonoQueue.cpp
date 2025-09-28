@@ -2,23 +2,28 @@
 
 using namespace std;
 
-struct MonoQueue {
+class MonoQueue {
+private:
   int pops = 0, pushes = 0;
-  deque<pair<long long, int>> Q;
+  deque<pair<long long, int>> queue;
+
+public:
   void push(const long long &val) {
-    while (!Q.empty() and Q.back().first <= val)
-      Q.pop_back();
+    while (!queue.empty() and queue.back().first <= val)
+      queue.pop_back();
     pushes++;
-    Q.push_back({val, pushes});
+    queue.push_back({val, pushes});
   }
+
   void pop() {
     pops++;
-    if (!Q.empty() and pops == Q.front().second)
-      Q.pop_front();
+    if (!queue.empty() and pops == queue.front().second)
+      queue.pop_front();
   }
+
   long long max() {
-    if (Q.empty())
+    if (queue.empty())
       return -LONG_LONG_MAX;
-    return Q.front().first;
+    return queue.front().first;
   }
 };
