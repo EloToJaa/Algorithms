@@ -1,14 +1,12 @@
 #include <bits/stdc++.h>
 
-using namespace std;
-
-class MonoQueue {
+template <typename T> class MonoQueue {
 private:
   int pops = 0, pushes = 0;
-  deque<pair<long long, int>> queue;
+  std::deque<std::pair<T, int>> queue;
 
 public:
-  void push(const long long &val) {
+  void push(const T &val) {
     while (!queue.empty() and queue.back().first <= val)
       queue.pop_back();
     pushes++;
@@ -21,9 +19,9 @@ public:
       queue.pop_front();
   }
 
-  long long max() {
+  T max() {
     if (queue.empty())
-      return -LONG_LONG_MAX;
+      return std::numeric_limits<T>::lowest();
     return queue.front().first;
   }
 };
