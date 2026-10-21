@@ -1,18 +1,19 @@
 """Iterative segment tree for point assignment and inclusive range maximum."""
 
+from collections.abc import Sequence
 from math import inf
 
 
 class PointRangeMax:
-    def __init__(self, values):
+    def __init__(self, values: Sequence[float]) -> None:
         self.size = len(values)
         self.base = 1 << max(0, (self.size - 1).bit_length())
-        self.tree = [-inf] * (2 * self.base)
+        self.tree: list[float] = [-inf] * (2 * self.base)
         self.tree[self.base : self.base + self.size] = values
         for node in range(self.base - 1, 0, -1):
             self.tree[node] = max(self.tree[2 * node], self.tree[2 * node + 1])
 
-    def update(self, index, value):
+    def update(self, index: int, value: float) -> None:
         node = self.base + index
         self.tree[node] = value
         node //= 2
@@ -20,7 +21,7 @@ class PointRangeMax:
             self.tree[node] = max(self.tree[2 * node], self.tree[2 * node + 1])
             node //= 2
 
-    def query(self, left, right):
+    def query(self, left: int, right: int) -> float:
         left, right = left + self.base, right + self.base
         result = -inf
         while left <= right:

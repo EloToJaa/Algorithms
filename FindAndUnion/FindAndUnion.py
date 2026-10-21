@@ -2,17 +2,17 @@
 
 
 class DisjointSet:
-    def __init__(self, size):
+    def __init__(self, size: int) -> None:
         self.parent = list(range(size))
         self.size = [1] * size
 
-    def find(self, vertex):
+    def find(self, vertex: int) -> int:
         while self.parent[vertex] != vertex:
             self.parent[vertex] = self.parent[self.parent[vertex]]
             vertex = self.parent[vertex]
         return vertex
 
-    def union(self, first, second):
+    def union(self, first: int, second: int) -> bool:
         """Return whether two previously distinct components were joined."""
         first, second = self.find(first), self.find(second)
         if first == second:

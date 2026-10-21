@@ -1,14 +1,14 @@
 """Euclid and extended Euclid, including signed and zero inputs."""
 
 
-def gcd(first, second):
+def gcd(first: int, second: int) -> int:
     first, second = abs(first), abs(second)
     while second:
         first, second = second, first % second
     return first
 
 
-def extended_gcd(first, second):
+def extended_gcd(first: int, second: int) -> tuple[int, int, int]:
     """Return (g, x, y), where g >= 0 and first*x + second*y == g."""
     old_r, remainder = abs(first), abs(second)
     old_x, x, old_y, y = 1, 0, 0, 1

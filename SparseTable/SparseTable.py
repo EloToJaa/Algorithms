@@ -1,8 +1,10 @@
 """Static range minima with overlapping power-of-two blocks."""
 
+from collections.abc import Sequence
+
 
 class SparseTable:
-    def __init__(self, values):
+    def __init__(self, values: Sequence[float]) -> None:
         self.size = len(values)
         self.levels = [list(values)]
         width = 2
@@ -17,7 +19,7 @@ class SparseTable:
             )
             width *= 2
 
-    def query(self, left, right):
+    def query(self, left: int, right: int) -> float:
         """Minimum of the zero-based inclusive interval [left, right]."""
         if not 0 <= left <= right < self.size:
             raise ValueError("invalid range")

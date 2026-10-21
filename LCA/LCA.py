@@ -1,8 +1,10 @@
 """Lowest common ancestors using binary lifting on a connected tree."""
 
+from collections.abc import Sequence
+
 
 class LCA:
-    def __init__(self, graph, root=0):
+    def __init__(self, graph: Sequence[Sequence[int]], root: int = 0) -> None:
         size = len(graph)
         self.depth = [0] * size
         parent = [root] * size
@@ -22,7 +24,7 @@ class LCA:
             previous = self.up[-1]
             self.up.append([previous[previous[v]] for v in range(size)])
 
-    def query(self, first, second):
+    def query(self, first: int, second: int) -> int:
         if self.depth[first] < self.depth[second]:
             first, second = second, first
         difference = self.depth[first] - self.depth[second]

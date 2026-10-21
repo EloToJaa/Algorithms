@@ -1,7 +1,17 @@
 """Quicksort with a middle pivot moved to the partition's final slot."""
 
+from collections.abc import Iterable
+from typing import Any, Protocol, TypeVar
 
-def quick_sort(values):
+
+class Comparable(Protocol):
+    def __lt__(self, other: Any, /) -> bool: ...
+
+
+T = TypeVar("T", bound=Comparable)
+
+
+def quick_sort(values: Iterable[T]) -> list[T]:
     """Return a sorted copy using an explicit stack and Lomuto partitioning."""
     result = list(values)
     stack = [(0, len(result) - 1)]

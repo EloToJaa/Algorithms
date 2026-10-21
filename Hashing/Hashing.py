@@ -2,11 +2,11 @@
 
 
 class Hash:
-    def __init__(self, text, modulus=1_000_000_007):
+    def __init__(self, text: str, modulus: int = 1_000_000_007) -> None:
         self.text = text
         self.modulus = modulus
-        self.prefix = []
-        self.powers = []
+        self.prefix: list[list[int]] = []
+        self.powers: list[list[int]] = []
         for base in (29, 31):
             prefix, powers = [0], [1]
             for character in text:
@@ -17,7 +17,7 @@ class Hash:
             self.prefix.append(prefix)
             self.powers.append(powers)
 
-    def get_hash(self, left=0, right=None):
+    def get_hash(self, left: int = 0, right: int | None = None) -> tuple[int, ...]:
         """Position-independent hash of the half-open substring [left, right)."""
         if right is None:
             right = len(self.text)

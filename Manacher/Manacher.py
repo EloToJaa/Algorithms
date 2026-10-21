@@ -1,7 +1,7 @@
 """Linear-time odd and even palindrome radii."""
 
 
-def manacher(text):
+def manacher(text: str) -> tuple[list[int], list[int]]:
     """odd[i] includes center i; even[i] is centered just before i."""
     size = len(text)
     odd, even = [0] * size, [0] * size

@@ -1,7 +1,7 @@
 """Prefix-function construction and Knuth-Morris-Pratt matching."""
 
 
-def prefix_function(text):
+def prefix_function(text: str) -> list[int]:
     prefix = [0] * len(text)
     for index in range(1, len(text)):
         length = prefix[index - 1]
@@ -13,13 +13,13 @@ def prefix_function(text):
     return prefix
 
 
-def find_matches(text, pattern):
+def find_matches(text: str, pattern: str) -> list[int]:
     """Return all zero-based starts, including overlapping matches."""
     if not pattern:
         return list(range(len(text) + 1))
     prefix = prefix_function(pattern)
     length = 0
-    matches = []
+    matches: list[int] = []
     for index, character in enumerate(text):
         while length and character != pattern[length]:
             length = prefix[length - 1]

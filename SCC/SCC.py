@@ -1,14 +1,19 @@
 """Iterative Kosaraju decomposition of directed graphs."""
 
+from collections.abc import Sequence
 
-def strongly_connected_components(graph):
+
+def strongly_connected_components(
+    graph: Sequence[Sequence[int]],
+) -> tuple[list[int], list[list[int]]]:
     """Return (component IDs, vertex groups); IDs follow condensation order."""
     size = len(graph)
-    reverse = [[] for _ in graph]
+    reverse: list[list[int]] = [[] for _ in graph]
     for vertex, edges in enumerate(graph):
         for neighbor in edges:
             reverse[neighbor].append(vertex)
-    seen, order = [False] * size, []
+    seen = [False] * size
+    order: list[int] = []
     for start in range(size):
         if seen[start]:
             continue
@@ -24,13 +29,15 @@ def strongly_connected_components(graph):
             if not seen[neighbor]:
                 seen[neighbor] = True
                 stack.append((neighbor, iter(graph[neighbor])))
-    component, groups = [-1] * size, []
+    component = [-1] * size
+    groups: list[list[int]] = []
     for start in reversed(order):
         if component[start] != -1:
             continue
         identifier = len(groups)
         component[start] = identifier
-        stack, group = [start], []
+        stack = [start]
+        group: list[int] = []
         while stack:
             vertex = stack.pop()
             group.append(vertex)

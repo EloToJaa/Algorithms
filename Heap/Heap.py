@@ -1,16 +1,27 @@
 """One-based binary min and max heaps with sift-up and sift-down."""
 
+from collections.abc import Iterable
+from typing import Any, Generic, Protocol, TypeVar, cast
 
-class MinHeap:
-    def __init__(self, values=()):
-        self.heap = [None]
+
+class Comparable(Protocol):
+    def __lt__(self, other: Any, /) -> bool: ...
+    def __gt__(self, other: Any, /) -> bool: ...
+
+
+T = TypeVar("T", bound=Comparable)
+
+
+class MinHeap(Generic[T]):
+    def __init__(self, values: Iterable[T] = ()) -> None:
+        self.heap: list[T] = [cast(T, None)]  # index 0 is unused
         for value in values:
             self.insert(value)
 
-    def _before(self, first, second):
+    def _before(self, first: T, second: T) -> bool:
         return first < second
 
-    def insert(self, value):
+    def insert(self, value: T) -> None:
         self.heap.append(value)
         index = len(self.heap) - 1
         while index > 1 and self._before(self.heap[index], self.heap[index // 2]):
@@ -20,7 +31,7 @@ class MinHeap:
             )
             index //= 2
 
-    def _sift_down(self):
+    def _sift_down(self) -> None:
         index = 1
         while 2 * index < len(self.heap):
             child = 2 * index
@@ -33,10 +44,10 @@ class MinHeap:
             self.heap[index], self.heap[child] = self.heap[child], self.heap[index]
             index = child
 
-    def top(self):
+    def top(self) -> T:
         return self.heap[1]
 
-    def remove(self):
+    def remove(self) -> T:
         """Remove and return the root; requires a nonempty heap."""
         value = self.top()
         last = self.heap.pop()
@@ -45,20 +56,20 @@ class MinHeap:
             self._sift_down()
         return value
 
-    def replace(self, value):
+    def replace(self, value: T) -> T:
         """Replace the root; requires a nonempty heap."""
         previous = self.top()
         self.heap[1] = value
         self._sift_down()
         return previous
 
-    def size(self):
+    def size(self) -> int:
         return len(self.heap) - 1
 
-    def empty(self):
+    def empty(self) -> bool:
         return self.size() == 0
 
 
-class MaxHeap(MinHeap):
-    def _before(self, first, second):
+class MaxHeap(MinHeap[T]):
+    def _before(self, first: T, second: T) -> bool:
         return first > second

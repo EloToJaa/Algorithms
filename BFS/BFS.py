@@ -1,13 +1,14 @@
 """Breadth-first traversal using a FIFO queue."""
 
 from collections import deque
+from collections.abc import Sequence
 
 
-def bfs(graph, start):
+def bfs(graph: Sequence[Sequence[int]], start: int) -> list[int]:
     """Return reachable vertices in BFS order; graph is an adjacency sequence."""
     seen = {start}
     queue = deque([start])
-    order = []
+    order: list[int] = []
     while queue:
         vertex = queue.popleft()
         order.append(vertex)

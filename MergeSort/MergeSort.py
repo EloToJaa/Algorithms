@@ -1,12 +1,22 @@
 """Stable merge sort using one auxiliary buffer."""
 
+from collections.abc import Iterable
+from typing import Any, Protocol, TypeVar
 
-def merge_sort(values):
+
+class Comparable(Protocol):
+    def __le__(self, other: Any, /) -> bool: ...
+
+
+T = TypeVar("T", bound=Comparable)
+
+
+def merge_sort(values: Iterable[T]) -> list[T]:
     """Return a sorted copy; leave the input unchanged."""
     result = list(values)
     auxiliary = result.copy()
 
-    def sort(left, right):
+    def sort(left: int, right: int) -> None:
         if right - left <= 1:
             return
         middle = (left + right) // 2

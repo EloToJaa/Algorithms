@@ -2,11 +2,11 @@
 
 
 class Trie:
-    def __init__(self):
-        self.children = [{}]
+    def __init__(self) -> None:
+        self.children: list[dict[str, int]] = [{}]
         self.endings = [False]
 
-    def insert(self, word):
+    def insert(self, word: str) -> None:
         node = 0
         for character in word:
             if character not in self.children[node]:
@@ -16,7 +16,7 @@ class Trie:
             node = self.children[node][character]
         self.endings[node] = True
 
-    def _walk(self, text):
+    def _walk(self, text: str) -> int | None:
         node = 0
         for character in text:
             node = self.children[node].get(character)
@@ -24,9 +24,9 @@ class Trie:
                 return None
         return node
 
-    def search(self, word):
+    def search(self, word: str) -> bool:
         node = self._walk(word)
         return node is not None and self.endings[node]
 
-    def starts_with(self, prefix):
+    def starts_with(self, prefix: str) -> bool:
         return self._walk(prefix) is not None
