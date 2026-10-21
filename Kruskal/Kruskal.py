@@ -16,16 +16,21 @@ def kruskal(
             vertex = parent[vertex]
         return vertex
 
+    def union(first: int, second: int) -> bool:
+        first, second = find(first), find(second)
+        if first == second:
+            return False
+        if counts[first] > counts[second]:
+            first, second = second, first
+        parent[first] = second
+        counts[second] += counts[first]
+        return True
+
     total: float = 0
     selected: list[tuple[int, int, float]] = []
     for first, second, weight in sorted(edges, key=lambda edge: edge[2]):
-        a, b = find(first), find(second)
-        if a == b:
+        if not union(first, second):
             continue
-        if counts[a] > counts[b]:
-            a, b = b, a
-        parent[a] = b
-        counts[b] += counts[a]
         selected.append((first, second, weight))
         total += weight
     return total, selected
