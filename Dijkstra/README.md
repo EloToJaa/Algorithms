@@ -26,6 +26,13 @@ Run examples from the repository root. For examples written as expressions, eval
 
 C++ heap keys now use `long long`, predecessors and the queue reset between runs, and overflowing relaxations are skipped.
 
+## LeetCode problems
+
+- [743. Network Delay Time](https://leetcode.com/problems/network-delay-time/)
+- [1631. Path With Minimum Effort](https://leetcode.com/problems/path-with-minimum-effort/) — minimax path cost
+- [1976. Number of Ways to Arrive at Destination](https://leetcode.com/problems/number-of-ways-to-arrive-at-destination/) — count shortest paths
+- [778. Swim in Rising Water](https://leetcode.com/problems/swim-in-rising-water/)
+
 ## Tests
 
 [`test_Dijkstra.py`](test_Dijkstra.py) checks the Python implementation; [`test_Dijkstra.cpp`](test_Dijkstra.cpp) covers C++ regressions. From the repository root run:

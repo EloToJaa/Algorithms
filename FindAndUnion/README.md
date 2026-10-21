@@ -28,6 +28,13 @@ Run examples from the repository root. For examples written as expressions, eval
 
 C++ repeated unions no longer double a component size.
 
+## LeetCode problems
+
+- [684. Redundant Connection](https://leetcode.com/problems/redundant-connection/)
+- [547. Number of Provinces](https://leetcode.com/problems/number-of-provinces/)
+- [721. Accounts Merge](https://leetcode.com/problems/accounts-merge/)
+- [990. Satisfiability of Equality Equations](https://leetcode.com/problems/satisfiability-of-equality-equations/)
+
 ## Tests
 
 [`test_FindAndUnion.py`](test_FindAndUnion.py) checks the Python implementation; [`test_FindAndUnion.cpp`](test_FindAndUnion.cpp) covers C++ regressions. From the repository root run:

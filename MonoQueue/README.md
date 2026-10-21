@@ -30,6 +30,13 @@ Run examples from the repository root. For examples written as expressions, eval
 
 The original C++ implementation was retained and tested against a plain FIFO queue.
 
+## LeetCode problems
+
+- [239. Sliding Window Maximum](https://leetcode.com/problems/sliding-window-maximum/)
+- [1696. Jump Game VI](https://leetcode.com/problems/jump-game-vi/)
+- [1438. Longest Continuous Subarray With Absolute Diff Less Than or Equal to Limit](https://leetcode.com/problems/longest-continuous-subarray-with-absolute-diff-less-than-or-equal-to-limit/) — max and min queues
+- [862. Shortest Subarray with Sum at Least K](https://leetcode.com/problems/shortest-subarray-with-sum-at-least-k/)
+
 ## Tests
 
 [`test_MonoQueue.py`](test_MonoQueue.py) checks the Python implementation; [`test_MonoQueue.cpp`](test_MonoQueue.cpp) covers C++ regressions. From the repository root run:

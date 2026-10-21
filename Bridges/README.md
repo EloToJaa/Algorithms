@@ -25,6 +25,11 @@ assert bridges_and_articulation_points(3, [(0, 1), (0, 1), (1, 2)]) == ([2], [1]
 
 Run the example from the repository root. C++ implementations are reusable C++17 snippets with dynamic storage and no demo `main`; include the file in one translation unit.
 
+## LeetCode problems
+
+- [1192. Critical Connections in a Network](https://leetcode.com/problems/critical-connections-in-a-network/) — bridges
+- [1568. Minimum Number of Days to Disconnect Island](https://leetcode.com/problems/minimum-number-of-days-to-disconnect-island/) — articulation points
+
 ## Tests
 
 Random multigraphs are checked by removing each edge or vertex and recounting connected components. Regressions cover parallel edges, self-loops, root articulation rules, empty graphs, and a 5,000-vertex chain. [`test_Bridges.py`](test_Bridges.py) and [`test_Bridges.cpp`](test_Bridges.cpp) run with:

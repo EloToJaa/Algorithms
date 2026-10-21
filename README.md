@@ -35,6 +35,7 @@ Each algorithm has its own directory containing:
 | [Mo](Mo/README.md) | Mo's algorithm for distinct counts |
 | [Modulo](Modulo/README.md) | Modular arithmetic |
 | [MonoQueue](MonoQueue/README.md) | Monotone maximum queue |
+| [Prim](Prim/README.md) | Prim's minimum spanning forest |
 | [QuickSort](QuickSort/README.md) | Quicksort |
 | [SCC](SCC/README.md) | Strongly connected components (Kosaraju) |
 | [Sieve](Sieve/README.md) | Linear sieve and smallest prime factors |
@@ -71,7 +72,7 @@ python3 -m unittest discover -s QuickSort -t . -p 'test_*.py'
 
 ## Conventions
 
-Python graph vertices and array positions are zero-based. Range queries are inclusive for Mo and segment trees; string hash and KMR ranges are half-open. Each README explains the equivalent C++ indexing and initialization. The newer TopologicalSort, SCC, ZeroOneBFS, BellmanFord, and Bridges snippets also use zero-based C++ vertices and dynamic storage. SparseTable uses zero-based inclusive bounds in both languages. Algorithms expect inputs satisfying their documented assumptions.
+Python graph vertices and array positions are zero-based. Range queries are inclusive for Mo and segment trees; string hash and KMR ranges are half-open. Each README explains the equivalent C++ indexing and initialization. The newer TopologicalSort, SCC, ZeroOneBFS, BellmanFord, Bridges, and Prim snippets also use zero-based C++ vertices and dynamic storage. SparseTable uses zero-based inclusive bounds in both languages. Algorithms expect inputs satisfying their documented assumptions.
 
 C++ files retain their original competitive-programming interfaces and fixed-capacity arrays where applicable. Files with a demo/input `main` can be compiled as programs; other files are reusable snippets. C++ regressions include each snippet in its own translation unit to avoid collisions between global names.
 

@@ -26,6 +26,13 @@ Run examples from the repository root. For examples written as expressions, eval
 
 C++ now moves the selected pivot into the slot used by partitioning, fixing incorrect output, and bounds recursive stack depth.
 
+## LeetCode problems
+
+- [912. Sort an Array](https://leetcode.com/problems/sort-an-array/)
+- [75. Sort Colors](https://leetcode.com/problems/sort-colors/) — three-way partition
+- [215. Kth Largest Element in an Array](https://leetcode.com/problems/kth-largest-element-in-an-array/) — quickselect
+- [973. K Closest Points to Origin](https://leetcode.com/problems/k-closest-points-to-origin/) — quickselect
+
 ## Tests
 
 [`test_QuickSort.py`](test_QuickSort.py) checks the Python implementation; [`test_QuickSort.cpp`](test_QuickSort.cpp) covers C++ regressions. From the repository root run:

@@ -28,6 +28,12 @@ Run this example from the repository root.
 
 C++ `build(n)` reads A[1..n]; `update(position, value)` assigns a value; `query(l, r)` returns an inclusive range maximum. C++ uses LLONG_MIN padding, resets the tree on rebuild, and accepts 64-bit updates.
 
+## LeetCode problems
+
+- [2407. Longest Increasing Subsequence II](https://leetcode.com/problems/longest-increasing-subsequence-ii/) — range max over values
+- [2940. Find Building Where Alice and Bob Can Meet](https://leetcode.com/problems/find-building-where-alice-and-bob-can-meet/)
+- [307. Range Sum Query - Mutable](https://leetcode.com/problems/range-sum-query-mutable/) — swap max for sum
+
 ## Tests
 
 [`test_TreePointSegment.py`](test_TreePointSegment.py) and [`test_TreePointSegment.cpp`](test_TreePointSegment.cpp) compare randomized operations with a plain array, including negative values, overlapping updates, one-element ranges, and non-power-of-two sizes. From the repository root:

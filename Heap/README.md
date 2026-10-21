@@ -27,6 +27,13 @@ Run examples from the repository root. For examples written as expressions, eval
 
 C++ heapify now clears existing contents, and empty root operations raise instead of accessing invalid memory.
 
+## LeetCode problems
+
+- [215. Kth Largest Element in an Array](https://leetcode.com/problems/kth-largest-element-in-an-array/)
+- [1046. Last Stone Weight](https://leetcode.com/problems/last-stone-weight/)
+- [23. Merge k Sorted Lists](https://leetcode.com/problems/merge-k-sorted-lists/)
+- [295. Find Median from Data Stream](https://leetcode.com/problems/find-median-from-data-stream/) — one min heap and one max heap
+
 ## Tests
 
 [`test_Heap.py`](test_Heap.py) checks the Python implementation; [`test_Heap.cpp`](test_Heap.cpp) covers C++ regressions. From the repository root run:

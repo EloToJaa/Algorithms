@@ -26,6 +26,13 @@ Run examples from the repository root. For examples written as expressions, eval
 
 C++ bounds decimal input reads, trims leading zero limbs and zero multiplication results, rejects negative subtraction/multipliers and nonpositive divisors, checks arithmetic capacity before writing extra limbs, and uses consistent stdio output.
 
+## LeetCode problems
+
+- [415. Add Strings](https://leetcode.com/problems/add-strings/)
+- [43. Multiply Strings](https://leetcode.com/problems/multiply-strings/)
+- [989. Add to Array-Form of Integer](https://leetcode.com/problems/add-to-array-form-of-integer/)
+- [2. Add Two Numbers](https://leetcode.com/problems/add-two-numbers/) — digits stored in a linked list
+
 ## Tests
 
 [`test_BigNumbers.py`](test_BigNumbers.py) checks the Python implementation; [`test_BigNumbers.cpp`](test_BigNumbers.cpp) covers C++ regressions. From the repository root run:

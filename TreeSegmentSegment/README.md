@@ -28,6 +28,12 @@ Run this example from the repository root.
 
 C++ `build(n)` reads A[1..n] and establishes the power-of-two base `ntree`. Call `update(1, 1, ntree, l, r, value)` and `query(1, 1, ntree, l, r)` with one-based inclusive bounds. Build now aggregates sums rather than maxima, matching the existing lazy updates/queries, and clears all old values and tags.
 
+## LeetCode problems
+
+- [307. Range Sum Query - Mutable](https://leetcode.com/problems/range-sum-query-mutable/)
+- [732. My Calendar III](https://leetcode.com/problems/my-calendar-iii/) — swap sum for max
+- [2569. Handling Sum Queries After Update](https://leetcode.com/problems/handling-sum-queries-after-update/) — lazy flips
+
 ## Tests
 
 [`test_TreeSegmentSegment.py`](test_TreeSegmentSegment.py) and [`test_TreeSegmentSegment.cpp`](test_TreeSegmentSegment.cpp) compare randomized operations with a plain array, including negative values, overlapping updates, one-element ranges, and non-power-of-two sizes. From the repository root:

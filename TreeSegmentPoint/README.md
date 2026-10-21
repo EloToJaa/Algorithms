@@ -29,6 +29,13 @@ Run this example from the repository root.
 
 C++ `build(n)` reads A[1..n]; `update(l, r, value)` adds value; `query(position)` returns the resulting point value. The original mixed assignment, increment, and maximum operations were replaced with consistent range addition and path summation. Rebuild clears old tags.
 
+## LeetCode problems
+
+- [1109. Corporate Flight Bookings](https://leetcode.com/problems/corporate-flight-bookings/)
+- [2381. Shifting Letters II](https://leetcode.com/problems/shifting-letters-ii/)
+- [1094. Car Pooling](https://leetcode.com/problems/car-pooling/)
+- [370. Range Addition](https://leetcode.com/problems/range-addition/) — Premium
+
 ## Tests
 
 [`test_TreeSegmentPoint.py`](test_TreeSegmentPoint.py) and [`test_TreeSegmentPoint.cpp`](test_TreeSegmentPoint.cpp) compare randomized operations with a plain array, including negative values, overlapping updates, one-element ranges, and non-power-of-two sizes. From the repository root:

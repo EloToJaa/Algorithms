@@ -26,6 +26,13 @@ Run examples from the repository root. For examples written as expressions, eval
 
 C++ now accepts callable predicates, uses overflow-safe midpoint arithmetic, and explicitly handles missing boundaries.
 
+## LeetCode problems
+
+- [278. First Bad Version](https://leetcode.com/problems/first-bad-version/)
+- [875. Koko Eating Bananas](https://leetcode.com/problems/koko-eating-bananas/)
+- [1011. Capacity To Ship Packages Within D Days](https://leetcode.com/problems/capacity-to-ship-packages-within-d-days/)
+- [410. Split Array Largest Sum](https://leetcode.com/problems/split-array-largest-sum/)
+
 ## Tests
 
 [`test_BinSearch.py`](test_BinSearch.py) checks the Python implementation; [`test_BinSearch.cpp`](test_BinSearch.cpp) covers C++ regressions. From the repository root run:

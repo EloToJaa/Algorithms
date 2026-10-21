@@ -24,6 +24,12 @@ assert table.query(0, 4) == -5
 
 Run the example from the repository root. C++ implementations are reusable C++17 snippets with dynamic storage and no demo `main`; include the file in one translation unit.
 
+## LeetCode problems
+
+- [239. Sliding Window Maximum](https://leetcode.com/problems/sliding-window-maximum/) — range maximum
+- [2398. Maximum Number of Robots Within Budget](https://leetcode.com/problems/maximum-number-of-robots-within-budget/) — range maximum
+- [1793. Maximum Score of a Good Subarray](https://leetcode.com/problems/maximum-score-of-a-good-subarray/) — range minimum
+
 ## Tests
 
 Every interval in random arrays is compared with a direct minimum. Regressions cover singletons, non-power-of-two sizes, negative values, input copying, invalid ranges, and extreme integers. [`test_SparseTable.py`](test_SparseTable.py) and [`test_SparseTable.cpp`](test_SparseTable.cpp) run with:

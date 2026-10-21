@@ -26,6 +26,13 @@ Run examples from the repository root. For examples written as expressions, eval
 
 C++ now uses standard `lower_bound`, simplifying duplicate handling and the tails invariant.
 
+## LeetCode problems
+
+- [300. Longest Increasing Subsequence](https://leetcode.com/problems/longest-increasing-subsequence/)
+- [354. Russian Doll Envelopes](https://leetcode.com/problems/russian-doll-envelopes/)
+- [1964. Find the Longest Valid Obstacle Course at Each Position](https://leetcode.com/problems/find-the-longest-valid-obstacle-course-at-each-position/) — non-decreasing variant
+- [673. Number of Longest Increasing Subsequence](https://leetcode.com/problems/number-of-longest-increasing-subsequence/)
+
 ## Tests
 
 [`test_LIS.py`](test_LIS.py) checks the Python implementation; [`test_LIS.cpp`](test_LIS.cpp) covers C++ regressions. From the repository root run:

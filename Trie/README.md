@@ -28,6 +28,13 @@ Run examples from the repository root. For examples written as expressions, eval
 
 The original C++ implementation was retained and checked for prefixes, duplicates, and empty words.
 
+## LeetCode problems
+
+- [208. Implement Trie (Prefix Tree)](https://leetcode.com/problems/implement-trie-prefix-tree/)
+- [211. Design Add and Search Words Data Structure](https://leetcode.com/problems/design-add-and-search-words-data-structure/)
+- [1268. Search Suggestions System](https://leetcode.com/problems/search-suggestions-system/)
+- [212. Word Search II](https://leetcode.com/problems/word-search-ii/) — trie + DFS
+
 ## Tests
 
 [`test_Trie.py`](test_Trie.py) checks the Python implementation; [`test_Trie.cpp`](test_Trie.cpp) covers C++ regressions. From the repository root run:

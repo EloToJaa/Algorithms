@@ -25,6 +25,13 @@ assert sieve.factorize(72) == [(2, 3), (3, 2)]
 
 Run the example from the repository root. C++ implementations are reusable C++17 snippets with dynamic storage and no demo `main`; include the file in one translation unit.
 
+## LeetCode problems
+
+- [204. Count Primes](https://leetcode.com/problems/count-primes/)
+- [2523. Closest Prime Numbers in Range](https://leetcode.com/problems/closest-prime-numbers-in-range/)
+- [2507. Smallest Value After Replacing With Sum of Prime Factors](https://leetcode.com/problems/smallest-value-after-replacing-with-sum-of-prime-factors/) — smallest prime factors
+- [952. Largest Component Size by Common Factor](https://leetcode.com/problems/largest-component-size-by-common-factor/) — smallest prime factors + DSU
+
 ## Tests
 
 Prime lists, smallest factors, and factorizations are checked against trial division through 1,000. Regressions cover limits 0 and 1, prime powers, factorizing 1, and invalid inputs. [`test_Sieve.py`](test_Sieve.py) and [`test_Sieve.cpp`](test_Sieve.cpp) run with:

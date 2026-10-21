@@ -26,6 +26,13 @@ Run examples from the repository root. For examples written as expressions, eval
 
 C++ substring extraction now subtracts the correctly weighted prefix. Reinitialization clears old state, and powers cannot be undersized.
 
+## LeetCode problems
+
+- [1044. Longest Duplicate Substring](https://leetcode.com/problems/longest-duplicate-substring/) — binary search on length + hashing
+- [1316. Distinct Echo Substrings](https://leetcode.com/problems/distinct-echo-substrings/)
+- [718. Maximum Length of Repeated Subarray](https://leetcode.com/problems/maximum-length-of-repeated-subarray/)
+- [214. Shortest Palindrome](https://leetcode.com/problems/shortest-palindrome/) — compare forward and reverse hashes
+
 ## Tests
 
 [`test_Hashing.py`](test_Hashing.py) checks the Python implementation; [`test_Hashing.cpp`](test_Hashing.cpp) covers C++ regressions. From the repository root run:

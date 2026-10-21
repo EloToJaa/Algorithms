@@ -26,6 +26,12 @@ Run examples from the repository root. For examples written as expressions, eval
 
 C++ now exposes the accepted edges and a 64-bit total weight, resetting both on each run.
 
+## LeetCode problems
+
+- [1584. Min Cost to Connect All Points](https://leetcode.com/problems/min-cost-to-connect-all-points/)
+- [1489. Find Critical and Pseudo-Critical Edges in Minimum Spanning Tree](https://leetcode.com/problems/find-critical-and-pseudo-critical-edges-in-minimum-spanning-tree/)
+- [1697. Checking Existence of Edge Length Limited Paths](https://leetcode.com/problems/checking-existence-of-edge-length-limited-paths/) — offline queries sorted by limit
+
 ## Tests
 
 [`test_Kruskal.py`](test_Kruskal.py) checks the Python implementation; [`test_Kruskal.cpp`](test_Kruskal.cpp) covers C++ regressions. From the repository root run:

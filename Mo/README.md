@@ -26,6 +26,10 @@ Run examples from the repository root. For examples written as expressions, eval
 
 C++ now reads m queries (rather than n), uses a nonzero block size, and expands before shrinking the interval to keep frequencies valid.
 
+## LeetCode problems
+
+LeetCode has almost no problems that need Mo's algorithm. Classic practice problems are [SPOJ DQUERY](https://www.spoj.com/problems/DQUERY/) and [CSES Distinct Values Queries](https://cses.fi/problemset/task/1734).
+
 ## Tests
 
 [`test_Mo.py`](test_Mo.py) checks the Python implementation; [`test_Mo.cpp`](test_Mo.cpp) covers C++ regressions. From the repository root run:

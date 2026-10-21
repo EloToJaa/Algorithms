@@ -26,6 +26,13 @@ Run examples from the repository root. For examples written as expressions, eval
 
 C++ now exposes a whole-array sort method and a getter for the sorted result.
 
+## LeetCode problems
+
+- [912. Sort an Array](https://leetcode.com/problems/sort-an-array/)
+- [148. Sort List](https://leetcode.com/problems/sort-list/)
+- [315. Count of Smaller Numbers After Self](https://leetcode.com/problems/count-of-smaller-numbers-after-self/) — count during merge
+- [493. Reverse Pairs](https://leetcode.com/problems/reverse-pairs/) — count during merge
+
 ## Tests
 
 [`test_MergeSort.py`](test_MergeSort.py) checks the Python implementation; [`test_MergeSort.cpp`](test_MergeSort.cpp) covers C++ regressions. From the repository root run:
