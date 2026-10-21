@@ -26,6 +26,13 @@ Run examples from the repository root. For examples written as expressions, eval
 
 C++ now marks vertices on enqueue instead of dequeue, avoiding redundant queue entries.
 
+## LeetCode problems
+
+- [994. Rotting Oranges](https://leetcode.com/problems/rotting-oranges/) — multi-source BFS
+- [127. Word Ladder](https://leetcode.com/problems/word-ladder/)
+- [1091. Shortest Path in Binary Matrix](https://leetcode.com/problems/shortest-path-in-binary-matrix/)
+- [752. Open the Lock](https://leetcode.com/problems/open-the-lock/)
+
 ## Tests
 
 [`test_BFS.py`](test_BFS.py) checks the Python implementation; [`test_BFS.cpp`](test_BFS.cpp) covers C++ regressions. From the repository root run:

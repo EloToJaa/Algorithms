@@ -26,6 +26,12 @@ Run examples from the repository root. For examples written as expressions, eval
 
 The original C++ recurrence was retained and checked against direct center expansion.
 
+## LeetCode problems
+
+- [5. Longest Palindromic Substring](https://leetcode.com/problems/longest-palindromic-substring/)
+- [647. Palindromic Substrings](https://leetcode.com/problems/palindromic-substrings/)
+- [1960. Maximum Product of the Length of Two Palindromic Substrings](https://leetcode.com/problems/maximum-product-of-the-length-of-two-palindromic-substrings/)
+
 ## Tests
 
 [`test_Manacher.py`](test_Manacher.py) checks the Python implementation; [`test_Manacher.cpp`](test_Manacher.cpp) covers C++ regressions. From the repository root run:

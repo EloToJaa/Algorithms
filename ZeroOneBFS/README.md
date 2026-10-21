@@ -26,6 +26,12 @@ assert parent == [None, 2, 0]
 
 Run the example from the repository root. C++ implementations are reusable C++17 snippets with dynamic storage and no demo `main`; include the file in one translation unit.
 
+## LeetCode problems
+
+- [1368. Minimum Cost to Make at Least One Valid Path in a Grid](https://leetcode.com/problems/minimum-cost-to-make-at-least-one-valid-path-in-a-grid/)
+- [2290. Minimum Obstacle Removal to Reach Corner](https://leetcode.com/problems/minimum-obstacle-removal-to-reach-corner/)
+- [1824. Minimum Sideway Jumps](https://leetcode.com/problems/minimum-sideway-jumps/)
+
 ## Tests
 
 Python compares random graphs against Dijkstra; C++ uses repeated relaxation as a reference. Tests verify predecessor paths terminate at the source, and cover unreachable vertices, self-loops, zero-cost cycles, and invalid weights/sources. [`test_ZeroOneBFS.py`](test_ZeroOneBFS.py) and [`test_ZeroOneBFS.cpp`](test_ZeroOneBFS.cpp) run with:

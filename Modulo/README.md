@@ -26,6 +26,13 @@ Run examples from the repository root. For examples written as expressions, eval
 
 C++ now normalizes negative operands, reduces the base before odd-power multiplication, and rejects division by zero modulo the prime.
 
+## LeetCode problems
+
+- [50. Pow(x, n)](https://leetcode.com/problems/powx-n/) — fast exponentiation
+- [372. Super Pow](https://leetcode.com/problems/super-pow/)
+- [1922. Count Good Numbers](https://leetcode.com/problems/count-good-numbers/)
+- [1569. Number of Ways to Reorder Array to Get Same BST](https://leetcode.com/problems/number-of-ways-to-reorder-array-to-get-same-bst/) — binomials with modular inverses
+
 ## Tests
 
 [`test_Modulo.py`](test_Modulo.py) checks the Python implementation; [`test_Modulo.cpp`](test_Modulo.cpp) covers C++ regressions. From the repository root run:

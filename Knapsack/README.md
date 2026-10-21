@@ -26,6 +26,13 @@ Run examples from the repository root. For examples written as expressions, eval
 
 C++ now reads the item weights/values and prints the result with 64-bit values; previously it only read n and W.
 
+## LeetCode problems
+
+- [416. Partition Equal Subset Sum](https://leetcode.com/problems/partition-equal-subset-sum/)
+- [494. Target Sum](https://leetcode.com/problems/target-sum/)
+- [474. Ones and Zeroes](https://leetcode.com/problems/ones-and-zeroes/) — two-dimensional capacity
+- [1049. Last Stone Weight II](https://leetcode.com/problems/last-stone-weight-ii/)
+
 ## Tests
 
 [`test_Knapsack.py`](test_Knapsack.py) checks the Python implementation; [`test_Knapsack.cpp`](test_Knapsack.cpp) covers C++ regressions. From the repository root run:

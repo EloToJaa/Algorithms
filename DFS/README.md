@@ -26,6 +26,13 @@ Run examples from the repository root. For examples written as expressions, eval
 
 C++ recursion was replaced with an explicit stack so long chains do not overflow the call stack.
 
+## LeetCode problems
+
+- [200. Number of Islands](https://leetcode.com/problems/number-of-islands/)
+- [547. Number of Provinces](https://leetcode.com/problems/number-of-provinces/)
+- [133. Clone Graph](https://leetcode.com/problems/clone-graph/)
+- [797. All Paths From Source to Target](https://leetcode.com/problems/all-paths-from-source-to-target/)
+
 ## Tests
 
 [`test_DFS.py`](test_DFS.py) checks the Python implementation; [`test_DFS.cpp`](test_DFS.cpp) covers C++ regressions. From the repository root run:

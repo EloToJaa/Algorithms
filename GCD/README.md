@@ -26,6 +26,13 @@ assert g == 1 and inverse % 12 == 5
 
 Run the example from the repository root. C++ implementations are reusable C++17 snippets with dynamic storage and no demo `main`; include the file in one translation unit.
 
+## LeetCode problems
+
+- [1979. Find Greatest Common Divisor of Array](https://leetcode.com/problems/find-greatest-common-divisor-of-array/)
+- [1071. Greatest Common Divisor of Strings](https://leetcode.com/problems/greatest-common-divisor-of-strings/)
+- [914. X of a Kind in a Deck of Cards](https://leetcode.com/problems/x-of-a-kind-in-a-deck-of-cards/)
+- [365. Water and Jug Problem](https://leetcode.com/problems/water-and-jug-problem/) — Bézout's identity
+
 ## Tests
 
 Tests compare against standard-library GCD and verify the Bézout identity for signed/zero inputs and large random numbers. C++ checks 64-bit boundaries with wide reference arithmetic; Python includes 100-digit inputs. [`test_GCD.py`](test_GCD.py) and [`test_GCD.cpp`](test_GCD.cpp) run with:

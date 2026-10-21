@@ -26,6 +26,13 @@ Run examples from the repository root. For examples written as expressions, eval
 
 C++ explicitly resets the base prefix entries for repeated calls.
 
+## LeetCode problems
+
+- [28. Find the Index of the First Occurrence in a String](https://leetcode.com/problems/find-the-index-of-the-first-occurrence-in-a-string/)
+- [1392. Longest Happy Prefix](https://leetcode.com/problems/longest-happy-prefix/) — last prefix-function value
+- [459. Repeated Substring Pattern](https://leetcode.com/problems/repeated-substring-pattern/)
+- [214. Shortest Palindrome](https://leetcode.com/problems/shortest-palindrome/)
+
 ## Tests
 
 [`test_KMP.py`](test_KMP.py) checks the Python implementation; [`test_KMP.cpp`](test_KMP.cpp) covers C++ regressions. From the repository root run:

@@ -26,6 +26,12 @@ assert bellman_ford(3, [(0, 1, 0), (1, 1, -1), (1, 2, 2)], 0)[0] == [0, -inf, -i
 
 Run the example from the repository root. C++ implementations are reusable C++17 snippets with dynamic storage and no demo `main`; include the file in one translation unit.
 
+## LeetCode problems
+
+- [787. Cheapest Flights Within K Stops](https://leetcode.com/problems/cheapest-flights-within-k-stops/) — run at most k+1 relaxation rounds
+- [743. Network Delay Time](https://leetcode.com/problems/network-delay-time/)
+- [1514. Path with Maximum Probability](https://leetcode.com/problems/path-with-maximum-probability/) — relax with multiplication
+
 ## Tests
 
 Random signed-weight graphs are checked against Floyd–Warshall, including negative-cycle reachability and predecessor paths. Regressions cover downstream propagation, unreachable cycles, self-loops, empty edge lists, invalid sources, and C++ distance boundaries/overflow. [`test_BellmanFord.py`](test_BellmanFord.py) and [`test_BellmanFord.cpp`](test_BellmanFord.cpp) run with:

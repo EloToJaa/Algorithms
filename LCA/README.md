@@ -27,6 +27,13 @@ Run examples from the repository root. For examples written as expressions, eval
 
 C++ now skips the parent, fixing infinite recursion on undirected trees, and avoids recursion depth limits.
 
+## LeetCode problems
+
+- [236. Lowest Common Ancestor of a Binary Tree](https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/)
+- [235. Lowest Common Ancestor of a Binary Search Tree](https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/)
+- [1483. Kth Ancestor of a Tree Node](https://leetcode.com/problems/kth-ancestor-of-a-tree-node/) — binary lifting
+- [2846. Minimum Edge Weight Equilibrium Queries in a Tree](https://leetcode.com/problems/minimum-edge-weight-equilibrium-queries-in-a-tree/)
+
 ## Tests
 
 [`test_LCA.py`](test_LCA.py) checks the Python implementation; [`test_LCA.cpp`](test_LCA.cpp) covers C++ regressions. From the repository root run:

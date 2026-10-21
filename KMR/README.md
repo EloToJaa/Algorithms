@@ -28,6 +28,12 @@ Run examples from the repository root. For examples written as expressions, eval
 
 C++ substring comparison now correctly handles unequal lengths and powers of two, empty construction avoids log2(0), and LCP uses linear-time Kasai scanning.
 
+## LeetCode problems
+
+- [1044. Longest Duplicate Substring](https://leetcode.com/problems/longest-duplicate-substring/) — adjacent suffixes in the suffix array
+- [1163. Last Substring in Lexicographical Order](https://leetcode.com/problems/last-substring-in-lexicographical-order/) — largest suffix
+- [1316. Distinct Echo Substrings](https://leetcode.com/problems/distinct-echo-substrings/) — compare substrings by rank
+
 ## Tests
 
 [`test_KMR.py`](test_KMR.py) checks the Python implementation; [`test_KMR.cpp`](test_KMR.cpp) covers C++ regressions. From the repository root run:

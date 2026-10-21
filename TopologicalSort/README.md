@@ -24,6 +24,13 @@ assert topological_sort([[1, 2], [2], []]) == [0, 1, 2]
 
 Run the example from the repository root. C++ implementations are reusable C++17 snippets with dynamic storage and no demo `main`; include the file in one translation unit.
 
+## LeetCode problems
+
+- [207. Course Schedule](https://leetcode.com/problems/course-schedule/)
+- [210. Course Schedule II](https://leetcode.com/problems/course-schedule-ii/)
+- [2115. Find All Possible Recipes from Given Supplies](https://leetcode.com/problems/find-all-possible-recipes-from-given-supplies/)
+- [1203. Sort Items by Groups Respecting Dependencies](https://leetcode.com/problems/sort-items-by-groups-respecting-dependencies/)
+
 ## Tests
 
 Random DAGs check that every edge points forward and every vertex occurs once. Regressions cover disconnected cycles, self-loops, parallel edges, empty graphs, and a 5,000-vertex chain. [`test_TopologicalSort.py`](test_TopologicalSort.py) and [`test_TopologicalSort.cpp`](test_TopologicalSort.cpp) run with:

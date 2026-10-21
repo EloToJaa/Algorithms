@@ -26,6 +26,12 @@ assert [sorted(group) for group in groups] == [[0, 1], [2, 3]]
 
 Run the example from the repository root. C++ implementations are reusable C++17 snippets with dynamic storage and no demo `main`; include the file in one translation unit.
 
+## LeetCode problems
+
+- [2360. Longest Cycle in a Graph](https://leetcode.com/problems/longest-cycle-in-a-graph/)
+- [802. Find Eventual Safe States](https://leetcode.com/problems/find-eventual-safe-states/)
+- [2127. Maximum Employees to Be Invited to a Meeting](https://leetcode.com/problems/maximum-employees-to-be-invited-to-a-meeting/)
+
 ## Tests
 
 Random graphs are checked against mutual reachability, including the complete partition and condensation ordering. A 5,000-vertex chain and cycle verify deep iterative traversals. [`test_SCC.py`](test_SCC.py) and [`test_SCC.cpp`](test_SCC.cpp) run with:
