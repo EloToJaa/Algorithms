@@ -1,16 +1,17 @@
 """Kahn's topological ordering for directed graphs."""
 
 from collections import deque
+from collections.abc import Sequence
 
 
-def topological_sort(graph):
+def topological_sort(graph: Sequence[Sequence[int]]) -> list[int]:
     """Return a vertex ordering; raise ValueError if any directed cycle exists."""
     indegree = [0] * len(graph)
     for edges in graph:
         for neighbor in edges:
             indegree[neighbor] += 1
     queue = deque(v for v, degree in enumerate(indegree) if degree == 0)
-    order = []
+    order: list[int] = []
     while queue:
         vertex = queue.popleft()
         order.append(vertex)

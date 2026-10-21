@@ -1,7 +1,9 @@
 """Depth-first traversal without Python recursion limits."""
 
+from collections.abc import Sequence
 
-def dfs(graph, start):
+
+def dfs(graph: Sequence[Sequence[int]], start: int) -> list[int]:
     """Return recursive-style DFS order for an adjacency sequence."""
     seen = {start}
     order = [start]

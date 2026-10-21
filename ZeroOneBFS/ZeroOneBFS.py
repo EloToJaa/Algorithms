@@ -1,16 +1,20 @@
 """Shortest paths for graphs with edge weights zero or one."""
 
 from collections import deque
+from collections.abc import Sequence
 from math import inf
 
 
-def zero_one_bfs(graph, start):
+def zero_one_bfs(
+    graph: Sequence[Sequence[tuple[int, int]]], start: int
+) -> tuple[list[float], list[int | None]]:
     """Return (distances, predecessors); unreachable entries are inf/None."""
     if not 0 <= start < len(graph):
         raise ValueError("invalid source")
     if any(weight not in (0, 1) for edges in graph for _, weight in edges):
         raise ValueError("weights must be zero or one")
-    distance, parent = [inf] * len(graph), [None] * len(graph)
+    distance: list[float] = [inf] * len(graph)
+    parent: list[int | None] = [None] * len(graph)
     distance[start] = 0
     queue = deque([(0, start)])
     while queue:

@@ -2,11 +2,11 @@
 
 
 class Sieve:
-    def __init__(self, limit):
+    def __init__(self, limit: int) -> None:
         if limit < 0:
             raise ValueError("negative limit")
         self.spf = [0] * (limit + 1)
-        self.primes = []
+        self.primes: list[int] = []
         for value in range(2, limit + 1):
             if self.spf[value] == 0:
                 self.spf[value] = value
@@ -16,11 +16,11 @@ class Sieve:
                     break
                 self.spf[prime * value] = prime
 
-    def factorize(self, value):
+    def factorize(self, value: int) -> list[tuple[int, int]]:
         """Return sorted (prime, exponent) pairs for 1 <= value <= limit."""
         if not 1 <= value < len(self.spf):
             raise ValueError("value outside sieve")
-        factors = []
+        factors: list[tuple[int, int]] = []
         while value > 1:
             prime, exponent = self.spf[value], 0
             while value % prime == 0:

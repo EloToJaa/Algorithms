@@ -1,10 +1,14 @@
 """Iterative low-link analysis of undirected multigraphs."""
 
+from collections.abc import Iterable
 
-def bridges_and_articulation_points(size, edges):
+
+def bridges_and_articulation_points(
+    size: int, edges: Iterable[tuple[int, int]]
+) -> tuple[list[int], list[int]]:
     """Return (sorted bridge edge IDs, sorted articulation vertices)."""
     edges = list(edges)
-    graph = [[] for _ in range(size)]
+    graph: list[list[tuple[int, int]]] = [[] for _ in range(size)]
     for identifier, (first, second) in enumerate(edges):
         graph[first].append((second, identifier))
         graph[second].append((first, identifier))

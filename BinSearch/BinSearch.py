@@ -1,7 +1,9 @@
 """Binary searches over inclusive integer bounds and monotone predicates."""
 
+from collections.abc import Callable
 
-def search_first(l, r, check):
+
+def search_first(l: int, r: int, check: Callable[[int], bool]) -> int:
     """First true in false...true; return original r + 1 if none."""
     r += 1  # r + 1 stands for "none"
     while l < r:
@@ -13,7 +15,7 @@ def search_first(l, r, check):
     return l
 
 
-def search_last(l, r, check):
+def search_last(l: int, r: int, check: Callable[[int], bool]) -> int:
     """Last true in true...false; return original l - 1 if none."""
     l -= 1  # l - 1 stands for "none"
     while l < r:

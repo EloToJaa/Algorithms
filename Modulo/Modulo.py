@@ -2,19 +2,19 @@
 
 
 class Modulo:
-    def __init__(self, modulus=1_000_000_007):
+    def __init__(self, modulus: int = 1_000_000_007) -> None:
         self.modulus = modulus
 
-    def add(self, first, second):
+    def add(self, first: int, second: int) -> int:
         return (first + second) % self.modulus
 
-    def subtract(self, first, second):
+    def subtract(self, first: int, second: int) -> int:
         return (first - second) % self.modulus
 
-    def multiply(self, first, second):
+    def multiply(self, first: int, second: int) -> int:
         return first * second % self.modulus
 
-    def power(self, base, exponent):
+    def power(self, base: int, exponent: int) -> int:
         """Exponent must be nonnegative."""
         result = 1 % self.modulus
         base %= self.modulus
@@ -25,6 +25,6 @@ class Modulo:
             exponent //= 2
         return result
 
-    def divide(self, first, second):
+    def divide(self, first: int, second: int) -> int:
         """Requires a prime modulus and a divisor nonzero modulo it."""
         return self.multiply(first, self.power(second, self.modulus - 2))

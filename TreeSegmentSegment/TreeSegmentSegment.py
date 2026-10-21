@@ -1,13 +1,15 @@
 """Lazy segment tree for inclusive range addition and range sum."""
 
+from collections.abc import Sequence
+
 
 class RangeAddSum:
-    def __init__(self, values):
+    def __init__(self, values: Sequence[int]) -> None:
         self.size = len(values)
         self.tree = [0] * (4 * max(1, self.size))
         self.lazy = [0] * len(self.tree)
 
-        def build(node, left, right):
+        def build(node: int, left: int, right: int) -> None:
             if left == right:
                 self.tree[node] = values[left]
                 return
@@ -19,11 +21,11 @@ class RangeAddSum:
         if self.size:
             build(1, 0, self.size - 1)
 
-    def _apply(self, node, length, value):
+    def _apply(self, node: int, length: int, value: int) -> None:
         self.tree[node] += length * value
         self.lazy[node] += value
 
-    def _push(self, node, left, right):
+    def _push(self, node: int, left: int, right: int) -> None:
         if left == right or not self.lazy[node]:
             return
         middle = (left + right) // 2
@@ -31,8 +33,8 @@ class RangeAddSum:
         self._apply(2 * node + 1, right - middle, self.lazy[node])
         self.lazy[node] = 0
 
-    def update(self, left, right, value):
-        def visit(node, start, end):
+    def update(self, left: int, right: int, value: int) -> None:
+        def visit(node: int, start: int, end: int) -> None:
             if end < left or right < start:
                 return
             if left <= start and end <= right:
@@ -47,8 +49,8 @@ class RangeAddSum:
         if self.size:
             visit(1, 0, self.size - 1)
 
-    def query(self, left, right):
-        def visit(node, start, end):
+    def query(self, left: int, right: int) -> int:
+        def visit(node: int, start: int, end: int) -> int:
             if end < left or right < start:
                 return 0
             if left <= start and end <= right:

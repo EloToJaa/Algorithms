@@ -2,7 +2,7 @@
 
 
 class KMR:
-    def __init__(self, text):
+    def __init__(self, text: str) -> None:
         self.text = text
         size = len(text)
         alphabet = {char: rank for rank, char in enumerate(sorted(set(text)), 1)}
@@ -41,7 +41,7 @@ class KMR:
             self.lcp[position] = common
             common = max(0, common - 1)
 
-    def compare(self, left, right, other_left, other_right):
+    def compare(self, left: int, right: int, other_left: int, other_right: int) -> int:
         """Compare half-open substrings: 0 = less, 1 = equal, 2 = greater."""
         first_length, second_length = right - left, other_right - other_left
         shared = min(first_length, second_length)
@@ -56,7 +56,7 @@ class KMR:
             other_left += width
             shared -= width
         if shared:
-            first, second = self.text[left], self.text[other_left]
+            first, second = ord(self.text[left]), ord(self.text[other_left])
         else:
             first, second = first_length, second_length
         return 0 if first < second else 2 if first > second else 1
