@@ -81,4 +81,4 @@ Python graph vertices and array positions are zero-based. Range queries are incl
 
 C++ files retain their original competitive-programming interfaces and fixed-capacity arrays where applicable. Files with a demo/input `main` can be compiled as programs; other files are reusable snippets. C++ regressions include each snippet in its own translation unit to avoid collisions between global names.
 
-Correctness fixes cover quicksort pivot placement, duplicate union sizes, LCA parent traversal, knapsack input/output, Mo query input and interval movement, substring hashing/comparison, and consistent segment-tree semantics. DFS, LCA, and quicksort avoid unbounded call-stack depth. See individual READMEs for details.
+Correctness fixes cover quicksort pivot placement, duplicate union sizes, LCA parent traversal, knapsack input/output and memory, Mo query input and interval movement, substring hashing/comparison, and consistent segment-tree semantics. DFS, LCA, and quicksort avoid unbounded call-stack depth. See individual READMEs for details.

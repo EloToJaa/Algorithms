@@ -2,25 +2,21 @@
 
 using namespace std;
 
-const int N = 1e6, NT = N + 2, MAXW = 1e6;
-
-long long DP[MAXW + 2], w[N];
-int m[N];
-
 signed main() {
   ios_base::sync_with_stdio(0);
   cin.tie(0);
   int n, W;
   cin >> n >> W;
 
-  for (int j = 1; j <= n; ++j)
-    cin >> m[j] >> w[j];
-
-  for (int i = 0; i <= W; ++i)
-    DP[i] = 0;
-  for (int j = 1; j <= n; ++j)
-    for (int i = W - m[j]; i >= 0; --i)
-      DP[i + m[j]] = max(DP[i + m[j]], DP[i] + w[j]);
+  // One DP row; each item is applied as it is read, so memory is O(W).
+  vector<long long> DP(W + 1, 0);
+  for (int j = 0; j < n; ++j) {
+    int m;
+    long long w;
+    cin >> m >> w;
+    for (int i = W - m; i >= 0; --i)
+      DP[i + m] = max(DP[i + m], DP[i] + w);
+  }
   cout << DP[W] << "\n";
   return 0;
 }

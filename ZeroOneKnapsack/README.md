@@ -8,11 +8,11 @@ Keep one DP entry per capacity and update capacities in descending order for eve
 
 ## Complexity
 
-O(nW) time and O(W) space.
+O(nW) time and O(W) space: a single DP row indexed by capacity. Items are consumed one at a time and never stored, so a generator in Python or stdin in C++ adds no O(n) memory.
 
 ## Usage and assumptions
 
-`zero_one_knapsack(items, capacity)` takes `(weight, value)` pairs and returns the maximum value. Capacity and weights must be nonnegative integers; zero-weight items are allowed. C++ reads `n W`, then n lines of `weight value`, and prints the answer. C++ requires n < N and W <= MAXW.
+`zero_one_knapsack(items, capacity)` takes `(weight, value)` pairs and returns the maximum value. Capacity and weights must be nonnegative integers; zero-weight items are allowed. C++ reads `n W`, then n lines of `weight value`, and prints the answer.
 
 ```python
 from ZeroOneKnapsack.ZeroOneKnapsack import zero_one_knapsack
@@ -24,7 +24,7 @@ Run examples from the repository root. For examples written as expressions, eval
 
 ## C++ review
 
-C++ now reads the item weights/values and prints the result with 64-bit values; previously it only read n and W.
+C++ now reads the item weights/values and prints the result with 64-bit values; previously it only read n and W. It also applies each item as it is read and sizes the DP row to W + 1, replacing fixed global arrays of capacity N and MAXW.
 
 ## LeetCode problems
 

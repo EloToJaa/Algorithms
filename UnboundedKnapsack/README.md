@@ -8,7 +8,7 @@ Keep one DP entry per capacity and update capacities in ascending order for ever
 
 ## Complexity
 
-O(nW) time and O(W) space.
+O(nW) time and O(W) space: a single DP row indexed by capacity. Items are consumed one at a time, so a generator adds no O(n) memory in Python.
 
 ## Usage and assumptions
 
