@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 #include <cassert>
 #define main algorithm_main
-#include "Knapsack.cpp"
+#include "ZeroOneKnapsack.cpp"
 #undef main
 
 using namespace std;

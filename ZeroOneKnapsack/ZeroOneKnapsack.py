@@ -3,7 +3,7 @@
 from collections.abc import Iterable
 
 
-def knapsack(items: Iterable[tuple[int, int]], capacity: int) -> int:
+def zero_one_knapsack(items: Iterable[tuple[int, int]], capacity: int) -> int:
     """Best value at or below capacity; items are (nonnegative weight, value)."""
     best = [0] * (capacity + 1)
     for weight, value in items:
